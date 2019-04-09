@@ -6,6 +6,7 @@ var UserSchema = require('../models/user');
 
 router.get('/', function(req, res, next) {
   //TODO: Formulário de criação de um projeto
+  res.render('project_add');
 });
 
 router.get('/:projectId', function(req, res, next) {
