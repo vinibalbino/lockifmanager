@@ -5,8 +5,39 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-  <form class="" action="/project" method="post">
-    <button>Adicionar projeto</button>
-  </form>
+    <header>
+    <div class="navContainer">
+      <nav class="">
+        <img src="" alt=""/>
+        <ul class="nav_bar">
+          <li class="nav_link"><a href="/">Home</a></li>
+          <li class="nav_link"><a href="">Projeto</a>
+          
+            <ul class="dropdown">
+              <li><a href="">Adicionar projeto</a></li>
+              <li><a href="">Listar projetos</a></li>        
+            </ul>
+
+          </li>
+          <li class="nav_link"><a href="">Usuário</a>
+          
+            <ul class="dropdown">
+              <li><a href="">Adicionar projeto</a></li>
+              <li><a href="">Listar projetos</a></li>        
+            </ul>
+
+          </li>
+        </ul>
+      </nav>
+    </div>
+    </header>
+    <main>
+      <h1>Projetos cadastrados</h1>
+      <ul> 
+        <% projects.forEach(function(project) { %>
+        <li><p> <%= project.name %> - Descrição do projeto: <%= project.description %> </p></li>
+        <% }); %>
+      </ul> 
+    </main>
   </body>
 </html>
