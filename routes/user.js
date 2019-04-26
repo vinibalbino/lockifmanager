@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var ProjectSchema = require('../models/project');
 var UserSchema = require('../models/user');
 
-router.get('/', function(req, res, next) {
+router.get('/add', function(req, res, next) {
   //TODO: Formulário de criação de um usuário
   res.render('users_add');
 });
@@ -25,10 +25,25 @@ router.get('/:userId/edit', function(req, res, next) {
   //TODO: Formulário de edição de um usuário
 });
 
-router.post('/', function(req, res, next) {
+router.post('/add', function(req, res, next) {
   //TODO: Tratamento do formulário de criação de um usuário
-  
-  res.render('users_add_confirm');
+  console.log(req.body);
+  /*var name_user = req.body.name;
+  var cpf_user = req.body.cpf;
+  var birth_date = req.body.birth_date;
+  var user = new User({
+    name: name_user,
+    cpf: cpf_user,
+    birth_date: birth_date,
+  });
+  project.save(function(error){
+      if(error){
+        console.error(error);
+      }
+
+      res.redirect('/users');
+  })
+  */res.render('users_add_confirm')
 });
 
 module.exports = router;

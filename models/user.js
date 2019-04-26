@@ -13,4 +13,6 @@ var UserSchema = new Schema({
   groups: [String]
 });
 
-module.exports = UserSchema;
+User = mongoose.model("User", UserSchema);
+
+module.exports = User;

@@ -14,16 +14,16 @@
           <li class="nav_link"><a href="">Projeto</a>
           
             <ul class="dropdown">
-              <li><a href="">Adicionar projeto</a></li>
-              <li><a href="">Listar projetos</a></li>        
+              <li><a href="/project/add">Adicionar projeto</a></li>
+              <li><a href="/projects">Listar projetos</a></li>        
             </ul>
 
           </li>
           <li class="nav_link"><a href="">Usuário</a>
           
             <ul class="dropdown">
-              <li><a href="">Adicionar projeto</a></li>
-              <li><a href="">Listar projetos</a></li>        
+              <li><a href="/user/add">Adicionar usuário</a></li>
+              <li><a href="/users">Listar usuário</a></li>
             </ul>
 
           </li>
@@ -33,11 +33,13 @@
     </header>
     <main>
       <h1>Projetos cadastrados</h1>
-      <ul> 
-        <% projects.forEach(function(project) { %>
-        <li><p> <%= project.name %> - Descrição do projeto: <%= project.description %> </p></li>
-        <% }); %>
-      </ul> 
+      <div class="projectList">
+        <ul> 
+          <% projects.forEach(function(project) { %>
+          <li><p> <%= project.name %> - Descrição do projeto: <%= project.description %> </p></li>
+          <% }); %>
+        </ul> 
+      </div>  
     </main>
   </body>
 </html>
