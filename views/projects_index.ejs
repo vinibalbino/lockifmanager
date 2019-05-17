@@ -36,7 +36,7 @@
       <div class="projectList">
         <ul> 
           <% projects.forEach(function(project) { %>
-          <li><p> <%= project.name %> - Descrição do projeto: <%= project.description %> </p></li>
+          <li><p> <%= project.name %> - Descrição do projeto: <%= project.description %> </p><a href="/project/<%= project._id%>">Vizualizar o projeto</a></li>
           <% }); %>
         </ul> 
       </div>  

@@ -11,18 +11,34 @@ router.get('/add', function(req, res, next) {
 
 router.get('/:projectId', function(req, res, next) {
   //TODO: Visualização do projeto
+  var projectId = req.params.projectId;
+  Project.find({_id: projectId}).then(function(project) { 
+    res.render('project', {'project': project[0]});
+  });
 });
 
-router.delete('/:projectId', function(req, res, next) {
+router.delete('/:projectId/delete', function(req, res, next) {
   //TODO: Remove o projeto
+  var projectId = req.params.projectId
+  Project.findOneAndRemove({_id: projectId}, function(callback) {
+    res.redirect('projects');
+  });
 });
 
 router.get('/:projectId/edit', function(req, res, next) {
   //TODO: Formulário de edição de um projeto
+    var projectId = req.params.projectId;
+    Project.find({_id: projectId}).then(function(project) { 
+      res.render('project_edit', {'project': project[0]});
+    });
 });
 
-router.put('/:projectId', function(req, res, next) {
+router.post('/:projectId', function(req, res, next) {
   //TODO: Tratamento do formulário de edição de um projeto
+  var projectId = req.params.projectId;
+  Project.findOneAndUpdate( {_id: projectId}, req.body).then(function(callback) {
+      res.redirect('/projects')
+  });
 });
 
 router.post('/add', function(req, res, next) {

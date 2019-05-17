@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Adicionar Usuário</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <main>
+    <form action="." method="post">
+        <label for="">Nome do projeto</label>
+        <input type="text" name="name" value="<%= project.name%>" />
+        <label for="">Description</label>
+        <textarea name="description" id="" cols="30" rows="10"><%= project.description%></textarea>
+        <button>Editar Projeto</button>
+    </form>
+    </main>
+  </body>
+</html>
