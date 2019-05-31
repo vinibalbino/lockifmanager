@@ -39,25 +39,31 @@ router.post('/add', function(req, res, next) {
   var name_user = req.body.name;
   var cpf_user = req.body.cpf;
   var birth_date = req.body.birth_date;
-  User.find({}, function(err,users){
-    for(var i=0;i<users.length;i++){
-      if(users[i].cpf == cpf_user){
-        //TODO fazer algo para o usuário saber que existe uma pessoa com esse cpf
-      }
-    }
-  });
-  // var user = new User({
-  //   name: name_user,
-  //   cpf: cpf_user,
-  //   birth_date: birth_date,
-  // });
-  // user.save(function(error){
-  //     if(error){
-  //       console.error(error);
+  //TODO ver como tratar como um vetor pois está como objeto
+  // User.find({}, function(err,users){
+  //   for(var i=0;i<users.length;i++){
+  //     if(users[i].cpf == cpf_user){
+  //       console.log('tem que fazer algo');
+  //       logica = true;
   //     }
-
-  //     res.redirect('/users');
-  // })
+  //   }
+  // });
+  // if(logica == true){
+  //   var user = new User({
+  //     name: name_user,
+  //     cpf: cpf_user,
+  //     birth_date: birth_date,
+  //   });
+  //   user.save(function(error){
+  //       if(error){
+  //         res.render(error);
+  //       }
+  //       res.redirect('/users');
+  //   })  
+  // }
+  // else{
+  //   res.send('/');
+  // }
 });
 
 router.post('/:userId', function(req, res, next) {
