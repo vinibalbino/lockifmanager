@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Teste</title>
+    <title>Adicionar Usuário</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <% users.forEach(function(user){ %>
-      <p>Welcome to <%= user.name %></p>
-    <% }) %>
+    <header>
+    <div class="navContainer">
+      <nav class="">
+        <img src="" alt=""/>
+        <ul class="nav_bar">
+          <li class="nav_link"><a href="/">Home</a></li>
+          <li class="nav_link"><a href="">Projeto</a>
+          
+            <ul class="dropdown">
+              <li><a href="/project/add">Adicionar projeto</a></li>
+              <li><a href="/projects">Listar projetos</a></li>        
+            </ul>
+          </li>
+          <li class="nav_link"><a href="">Usuário</a>
+          
+            <ul class="dropdown">
+              <li><a href="/user/add">Adicionar usuário</a></li>
+              <li><a href="/users">Listar usuário</a></li>
+            </ul>
+
+          </li>
+        </ul>
+      </nav>
+    </div>
+    </header>
+    <main>
+      <h1>Usuários cadastrados</h1>
+      <div class="usersList">
+        <ul> 
+          <% users.forEach(function(users) { %>
+          <li><p> <%= users.name %> - CPF: <%= users.cpf %> - Data de nascimento : <%= users.birth_date %></p><a href="/user/<%= users.cpf %>">Vizualizar o usuário</a></li>
+          <% }); %>
+        </ul> 
+      </div>  
+    </main>
   </body>
 </html>

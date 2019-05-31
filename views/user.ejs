@@ -7,16 +7,16 @@
   <body>
     <main>
       <div>
-        <h1><%= project.name %></h1>
-        <p><%= project.description %></p>
-        <p><%= project.create_date %></p>
+        <h1><%= user.name %></h1>
+        <p>CPF: <%= user.cpf %></p>
+        <p>Data Nascimento: <%= user.birth_date %></p>
       </div>
-      <a href="<%= project._id%>/edit">Editar Projeto</a>
+      <a href="<%= user.cpf%>/edit">Editar Projeto</a>
       <a href="">Remover Projeto</a>
       <div class="modal hidden">
         <div>
           <p>Deseja Realmente deletar este projeto</p>
-          <a href="<%= project._id%>/delete">Sim</a>
+          <a href="<%= user.cpf%>/delete">Sim</a>
           <a href="">Não</a>
         </div>
       </div>

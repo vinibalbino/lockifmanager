@@ -17,11 +17,11 @@ router.get('/:projectId', function(req, res, next) {
   });
 });
 
-router.delete('/:projectId/delete', function(req, res, next) {
+router.get('/:projectId/delete', function(req, res, next) {
   //TODO: Remove o projeto
   var projectId = req.params.projectId
   Project.findOneAndRemove({_id: projectId}, function(callback) {
-    res.redirect('projects');
+    res.redirect('/');
   });
 });
 
@@ -33,15 +33,7 @@ router.get('/:projectId/edit', function(req, res, next) {
     });
 });
 
-router.post('/:projectId', function(req, res, next) {
-  //TODO: Tratamento do formulário de edição de um projeto
-  var projectId = req.params.projectId;
-  Project.findOneAndUpdate( {_id: projectId}, req.body).then(function(callback) {
-      res.redirect('/projects')
-  });
-});
-
-router.post('/add', function(req, res, next) {
+router.post('/add/', function(req, res, next) {
   //TODO: Tratamento do formulário de criação de um projeto
   var name_project = req.body.name;
   var description_project = req.body.description;
@@ -57,6 +49,14 @@ router.post('/add', function(req, res, next) {
 
       res.redirect('/projects');
   })
+});
+
+router.post('/:projectId', function(req, res, next) {
+  //TODO: Tratamento do formulário de edição de um projeto
+  var projectId = req.params.projectId;
+    Project.findOneAndUpdate( {_id: projectId}, req.body).then(function(callback) {
+        res.redirect('/projects')
+    });
 });
 
 module.exports = router;
