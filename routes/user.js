@@ -6,10 +6,7 @@ var User = require('../models/user');
 
 router.get('/add', function(req, res, next) {
   //TODO: Formulário de criação de um usuário
-  User.find().then(function(users) {
-    console.log(users);
-    res.render('users_add', {error: null, user: users});
-  });
+  res.render('users_add', {error: null});
 });
 
 router.get('/:userId', function(req, res, next) {

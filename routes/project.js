@@ -2,11 +2,14 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Project = require('../models/project');
-var UserSchema = require('../models/user');
+var User = require('../models/user');
 
 router.get('/add', function(req, res, next) {
   //TODO: Formulário de criação de um projeto
-  res.render('project_add');
+  User.find().then(function(users) {
+    console.log(users);
+    res.render('project_add', {user: users});
+  });
 });
 
 router.get('/:projectId', function(req, res, next) {

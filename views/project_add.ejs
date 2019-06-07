@@ -12,9 +12,9 @@
     <textarea name="description" id="" cols="30" rows="10"></textarea>
     <label for="">Participante</label><input id="mais" type="button" value="+"/>
     <select name="" id="">
-      <%= for(var i=0;i>user.length;i++){ %>
-        <option value="<%= user.objectId[i]%>"><%= user.name[i]%></option>
-      <%}%>
+      <% user.forEach(function(u){ %>
+        <option value="<%= u._id%>"><%= u.name%></option>
+      <%});%>
     </select>
     <button>Adicionar Projeto</button>
   </form>
