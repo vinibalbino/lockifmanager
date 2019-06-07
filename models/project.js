@@ -7,7 +7,7 @@ var ProjectSchema = new Schema({
   name: String,
   description: String,
   create_date: {type: Date, default: Date.now},
-  //users: [{type: ObjectId, ref: 'UserSchema'}],
+  users: [{type: ObjectId, ref: 'UserSchema'}],
   //coordinator: {type: ObjectId, ref: 'UserSchema'}
 });
 

@@ -6,7 +6,10 @@ var User = require('../models/user');
 
 router.get('/add', function(req, res, next) {
   //TODO: Formulário de criação de um usuário
-  res.render('users_add');
+  User.find().then(function(users) {
+    console.log(users);
+    res.render('users_add', {error: null, user: users});
+  });
 });
 
 router.get('/:userId', function(req, res, next) {
@@ -21,7 +24,7 @@ router.get('/:userId/delete', function(req, res, next) {
   //TODO: Remove usuário
   var userId = req.params.userId;
   User.findOneAndRemove({cpf: userId}, function(callback) {
-    res.redirect('/');
+    res.redirect('/users');
   });
 });
 
@@ -39,31 +42,24 @@ router.post('/add', function(req, res, next) {
   var name_user = req.body.name;
   var cpf_user = req.body.cpf;
   var birth_date = req.body.birth_date;
-  //TODO ver como tratar como um vetor pois está como objeto
-  // User.find({}, function(err,users){
-  //   for(var i=0;i<users.length;i++){
-  //     if(users[i].cpf == cpf_user){
-  //       console.log('tem que fazer algo');
-  //       logica = true;
-  //     }
-  //   }
-  // });
-  // if(logica == true){
-  //   var user = new User({
-  //     name: name_user,
-  //     cpf: cpf_user,
-  //     birth_date: birth_date,
-  //   });
-  //   user.save(function(error){
-  //       if(error){
-  //         res.render(error);
-  //       }
-  //       res.redirect('/users');
-  //   })  
-  // }
-  // else{
-  //   res.send('/');
-  // }
+  User.find({cpf: cpf_user}).then(function(users) { 
+    if (users.length == 0) {
+      var user = new User({
+        name: name_user,
+        cpf: cpf_user,
+        birth_date: birth_date,
+      });
+      user.save(function(error){
+          if(error){
+            res.render('error', {error: error});
+          }
+          res.redirect('/users');
+      });        
+    }
+    else {
+      res.render('users_add', {error: 'CPF já cadastrado'});
+    }
+  });
 });
 
 router.post('/:userId', function(req, res, next) {

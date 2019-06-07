@@ -5,11 +5,17 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-  <form class="" action="" method="post">
+  <form class="forms" action="" method="post">
     <label for="">Nome do projeto</label>
     <input type="text" name="name" value="" />
-    <label for="">Description</label>
+    <label for="">Descrição</label>
     <textarea name="description" id="" cols="30" rows="10"></textarea>
+    <label for="">Participante</label><input id="mais" type="button" value="+"/>
+    <select name="" id="">
+      <%= for(var i=0;i>user.length;i++){ %>
+        <option value="<%= user.objectId[i]%>"><%= user.name[i]%></option>
+      <%}%>
+    </select>
     <button>Adicionar Projeto</button>
   </form>
   </body>

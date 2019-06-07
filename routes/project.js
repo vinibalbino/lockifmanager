@@ -21,7 +21,7 @@ router.get('/:projectId/delete', function(req, res, next) {
   //TODO: Remove o projeto
   var projectId = req.params.projectId
   Project.findOneAndRemove({_id: projectId}, function(callback) {
-    res.redirect('/');
+    res.redirect('/projects');
   });
 });
 
