@@ -8,7 +8,7 @@ var ProjectSchema = new Schema({
   description: String,
   create_date: {type: Date, default: Date.now},
   users: [{type: ObjectId, ref: 'UserSchema'}],
-  //coordinator: {type: ObjectId, ref: 'UserSchema'}
+  coordinator: {type: ObjectId, ref: 'UserSchema'}
 });
 
 Project = mongoose.model("Project", ProjectSchema);

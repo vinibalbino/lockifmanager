@@ -10,12 +10,27 @@
     <input type="text" name="name" value="" />
     <label for="">Descrição</label>
     <textarea name="description" id="" cols="30" rows="10"></textarea>
-    <label for="">Participante</label><input id="mais" type="button" value="+"/>
-    <select name="" id="">
+    <label for="">Coordenador</label>
+    <select name="coordinator" id="">
+        <option value=""></option>
+        <% user.forEach(function(u){ %>
+          <option value="<%= u._id%>"><%= u.name%></option>
+        <%});%>
+      </select>
+    <label for="">Participante</label>
+    <a href="" onclick="add()">+</a>
+    <select name="participants" id="">
+      <option value=""></option>
       <% user.forEach(function(u){ %>
         <option value="<%= u._id%>"><%= u.name%></option>
       <%});%>
     </select>
+    <select name="participants" id="">
+        <option value=""></option>
+        <% user.forEach(function(u){ %>
+          <option value="<%= u._id%>"><%= u.name%></option>
+        <%});%>
+      </select>
     <button>Adicionar Projeto</button>
   </form>
   </body>

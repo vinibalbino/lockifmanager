@@ -38,20 +38,22 @@ router.get('/:projectId/edit', function(req, res, next) {
 
 router.post('/add/', function(req, res, next) {
   //TODO: Tratamento do formulário de criação de um projeto
+  console.log(req.body);
   var name_project = req.body.name;
   var description_project = req.body.description;
-  console.log(req.body);
-  var project = new Project({
-    name: name_project,
-    description: description_project
-  });
-  project.save(function(error){
-      if(error){
-        console.error(error);
-      }
+  var coordinator = req.body.;
+//   var project = new Project({
+//     name: name_project,
+//     description: description_project,
+//     users
+//   });
+//   project.save(function(error){
+//       if(error){
+//         console.error(error);
+//       }
 
-      res.redirect('/projects');
-  })
+//       res.redirect('/projects');
+//   })
 });
 
 router.post('/:projectId', function(req, res, next) {

@@ -6,16 +6,16 @@
   </head>
   <body>
     <% if(error != null) {%>
-      <h1><%= error %></h1>
-    <% }%>
+      <h1><%=  error %></h1>
+    <%}%>  
   <form class="forms" action="/user/add" method="post">
     <label for="name">Nome Completo</label>
-    <input id="name" type="text" name="name" value="" required/>
+    <input id="name" type="text" name="name" value=""   />
     <label for="cpf">CPF</label>
     <input id="cpf" type="text" name="cpf" value="" required/>
     <label for="birth_date">Data de nascimento</label>
-    <input id="birth_date" type="date" name="birth_date" required />
-    <button >Adicionar usuário</button>
+    <input id="birth_date" type="date" name="birth_date" required/>
+    <button>Adicionar usuário</button>
   </form>
   </body>
 </html>
