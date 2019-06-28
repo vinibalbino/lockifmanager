@@ -41,7 +41,8 @@ router.post('/add/', function(req, res, next) {
   console.log(req.body);
   var name_project = req.body.name;
   var description_project = req.body.description;
-  var coordinator = req.body.;
+  var coordinator = req.body.coordinator;
+  var participants = req.body.participants;
 //   var project = new Project({
 //     name: name_project,
 //     description: description_project,

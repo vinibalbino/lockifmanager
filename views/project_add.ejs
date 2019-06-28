@@ -18,20 +18,43 @@
         <%});%>
       </select>
     <label for="">Participante</label>
-    <a href="" onclick="add()">+</a>
-    <select name="participants" id="">
-      <option value=""></option>
-      <% user.forEach(function(u){ %>
-        <option value="<%= u._id%>"><%= u.name%></option>
-      <%});%>
-    </select>
-    <select name="participants" id="">
+    <a href="" id="add">+</a>
+    <div id="divParticipants">
+      <select name="participants" id="0">
         <option value=""></option>
         <% user.forEach(function(u){ %>
           <option value="<%= u._id%>"><%= u.name%></option>
         <%});%>
       </select>
+      <select name="participants" id="1">
+          <option value=""></option>
+          <% user.forEach(function(u){ %>
+            <option value="<%= u._id%>"><%= u.name%></option>
+          <%});%>
+        </select>
+    </div>   
     <button>Adicionar Projeto</button>
   </form>
   </body>
+  <script type='application/javascript'>
+      const button = document.getElementById('add');
+      button.addEventListener('click', function(){
+        
+        var select = document.createElement('select');
+          var option = document.createElement('option');
+          var users = user;
+          option.value = "";
+          option.text = "";
+          select.appendChild(option);
+          select.name = "participants";
+          option.value = "Olá";
+          for(var i=0;i<users.lenght;i++){
+              option.value = users._id[i];
+              option.text = users.name[i];
+              select.appendChild(option);
+          }  
+          var div = document.getElementById('divParticipants');
+          div.appendChild(select);
+    })
+  </script>
 </html>
