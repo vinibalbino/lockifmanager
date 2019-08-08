@@ -20,41 +20,73 @@
     <label for="">Participante</label>
     <a href="" id="add">+</a>
     <div id="divParticipants">
-      <select name="participants" id="0">
+      <select id="participantsChoice" name="" id="0">
         <option value=""></option>
         <% user.forEach(function(u){ %>
           <option value="<%= u._id%>"><%= u.name%></option>
         <%});%>
       </select>
-      <select name="participants" id="1">
-          <option value=""></option>
-          <% user.forEach(function(u){ %>
-            <option value="<%= u._id%>"><%= u.name%></option>
-          <%});%>
-        </select>
+        <input type="hidden" id="participants" value="[]">
     </div>   
     <button>Adicionar Projeto</button>
   </form>
+  <div id="addedParcipants">
+
+  </div>
   </body>
   <script type='application/javascript'>
-      const button = document.getElementById('add');
-      button.addEventListener('click', function(){
-        
-        var select = document.createElement('select');
-          var option = document.createElement('option');
-          var users = user;
-          option.value = "";
-          option.text = "";
-          select.appendChild(option);
-          select.name = "participants";
-          option.value = "Olá";
-          for(var i=0;i<users.lenght;i++){
-              option.value = users._id[i];
-              option.text = users.name[i];
-              select.appendChild(option);
-          }  
-          var div = document.getElementById('divParticipants');
-          div.appendChild(select);
-    })
+    const button = document.getElementById('add');
+    var logica = true;
+    button.addEventListener('click', function(e){
+      e.preventDefault();
+      let idUserSelected = document.getElementById('participantsChoice').value;
+      let participants = JSON.parse(document.getElementById('participants').value);
+      
+      if(idUserSelected == ""){
+        return
+      }
+    
+      for(var i = 0;i < participants.length;i++){
+        if(idUserSelected == participants[i]){
+          logica = false;
+        }
+      }
+      if(logica){
+        participants.push(idUserSelected);
+        document.getElementById('participants').value = JSON.stringify(participants);
+        var p = document.createElement('p');
+        var userSelected = document.getElementById('participantsChoice').selectedOptions[0].innerHTML;
+        p.innerHTML = userSelected;
+        p.id = idUserSelected
+        var a = document.createElement('a');
+        a.id = idUserSelected;
+        a.innerHTML = 'X'
+        a.href = "#";
+        a.onclick = removeTask;
+        a.id = idUserSelected ;
+        //var img = document.createElement('img');
+        //img.src = '../public/img/trash.png';
+        //img.alt = "Remover usuário";
+        //a.appendChild(img)
+        var div = document.getElementById('addedParcipants');
+        div.appendChild(p);
+        div.appendChild(a);
+        logica = true;
+      }else {
+        return logica = true
+      }
+    });
+    function removeTask (event) {
+      let participants = JSON.parse(document.getElementById('participants').value);
+      var positionUser;
+      var userId = event.target.id;
+      for(var i = 0;i < participants.length;i++){
+        if(userId == participants[i]){
+          positionUser = participants[i]
+        }
+      }
+      
+    }
+
   </script>
 </html>
