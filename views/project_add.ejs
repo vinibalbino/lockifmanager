@@ -30,9 +30,7 @@
     </div>   
     <button>Adicionar Projeto</button>
   </form>
-  <div id="addedParcipants">
-
-  </div>
+  <div id="addedParcipants"></div>
   </body>
   <script type='application/javascript'>
     const button = document.getElementById('add');
@@ -68,21 +66,35 @@
         //img.src = '../public/img/trash.png';
         //img.alt = "Remover usuário";
         //a.appendChild(img)
-        var div = document.getElementById('addedParcipants');
+        var divHTML = document.getElementById('addedParcipants');
+        var div = document.createElement('div');
+        div.id = idUserSelected;
         div.appendChild(p);
         div.appendChild(a);
+        divHTML.appendChild(div);
         logica = true;
       }else {
         return logica = true
       }
     });
+
     function removeTask (event) {
       let participants = JSON.parse(document.getElementById('participants').value);
       var positionUser;
+      var divChildren = document.getElementById('addedParcipants').children;
       var userId = event.target.id;
+      console.log(userId);
+      for(var i = 0;i < divChildren.length;i++ ){
+        if(userId == divChildren[i].id){
+          participants.splice(i,1);
+          document.getElementById(`${userId}`).remove();
+        }
+      }
+      document.getElementById('participants').value = JSON.stringify(participants);
+      console.log(participants);
       for(var i = 0;i < participants.length;i++){
         if(userId == participants[i]){
-          positionUser = participants[i]
+          positionUser = [i];
         }
       }
       
