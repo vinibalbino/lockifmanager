@@ -5,9 +5,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <% if(error != null) {%>
-      <h1><%=  error %></h1>
-    <%}%>  
+    
   <form class="forms" action="/user/add" method="post">
     <label for="name">Nome Completo</label>
     <input id="name" type="text" name="name" value=""   />
@@ -15,6 +13,12 @@
     <input id="cpf" type="text" name="cpf" value="" required/>
     <label for="birth_date">Data de nascimento</label>
     <input id="birth_date" type="date" name="birth_date" required/>
+    <% setTimeout(function() { %>
+      <% if(error != null) { %>
+        <h1><%= error %></h1>
+      <%  
+    <% },3000) %>
+    
     <button>Adicionar usuário</button>
   </form>
   </body>

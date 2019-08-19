@@ -10,9 +10,19 @@
         <h1><%= project.name %></h1>
         <p><%= project.description %></p>
         <p><%= project.create_date %></p>
+        <div>
+          <p class="bold">Coordenador</p>
+          <p><%= coordinator[0].name %></p>
+          <p class="bold">Participantes</p>
+          <% userNames.forEach(function(user){%>
+            <p><%= user.name %></p>
+          <%});%>
+        </div>
       </div>
-      <a href="<%= project._id%>/edit">Editar Projeto</a>
-      <a href="">Remover Projeto</a>
+      <div>
+        <a href="<%= project._id%>/edit">Editar Projeto</a>
+        <a href="">Remover Projeto</a>
+      </div>
       <div class="modal hidden">
         <div>
           <p>Deseja Realmente deletar este projeto</p>

@@ -4,8 +4,20 @@
 }
 
 body {
-  padding-left:10px; 
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+input, textarea, select {
+  border: 0.5px solid black;
+}
+
+main {
+  padding-left: 10px;
+}
+
+.bold {
+  font-weight: bold;
+  font-size: 18px;
 }
 
 header {
