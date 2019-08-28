@@ -14,26 +14,41 @@
         <label for="">Coordenador:</label>
         <div>
           <select name="coordinator" id="coordinator">
-              <option></option>
-              <% Users.forEach(function(user) { %>
-                <option value="<%= user._id%>"><%= user.name %></option>
-              <%})%>
+            <% allUsers.forEach(function(user){ %>
+                <%if(user.id == coordinator.id) { %>
+                  <option value="<%= user._id%>"><%= user.name %></option>
+                <%}%>
+            <% }) %>
+              <% allUsers.forEach(function(user){ %>
+                  <%if(user.name != coordinator.name) { %>
+                    <option value="<%= user._id%>"><%= user.name %></option>
+                  <%}%>
+              <% }) %>
           </select>
         </div>
         <label for="">Integrantes</label>
         <div>
           <select id="participantsChoice" name="">
             <option></option>
-              <% Users.forEach(function(user) { %>
+              <% allUsers.forEach(function(user) { %>
                 <option value="<%= user._id%>"><%= user.name %></option>
-              <%})%>
+              <% }); %>
           </select>
-          <a href="" id="add">+</a>
+          <a href="#" id="add">+</a>
         </div>
-        <input type="hidden" name="participants" id="participants" value="[]">
+        <input type="hidden" name="participants" id="participants" value="<%= JSON.stringify(users_id) %>">
         <button>Editar Projeto</button>
       </form>
-    <div id="addedParcipants"></div>
+    <div id="addedParcipants">
+      <% if(project != '') { %>
+        <% Users.forEach(function(user) { %>
+          <div id="<%= user._id %>">
+            <p id="<%= user._id %>"> <%= user.name %> </p>
+            <a id="<%= user._id %>" onclick="removeTask()" href="#">X</a>
+          </div>
+       <% }) %>
+      <% } %>
+    </div>
     </main>
   </body>
   <script type='application/javascript'>
@@ -41,11 +56,12 @@
     var logica = true;
     button.addEventListener('click', function(e){
       e.preventDefault();
+
       var idUserSelected = document.getElementById('participantsChoice').value;
       var participants = JSON.parse(document.getElementById('participants').value);
-      
+      console.log()
       if(idUserSelected == ""){
-        return
+        return;
       }
     
       for(let i = 0;i < participants.length;i++){
@@ -65,7 +81,6 @@
         a.innerHTML = 'X'
         a.href = "#";
         a.onclick = removeTask;
-        a.id = idUserSelected ;
         //var img = document.createElement('img');
         //img.src = '../public/img/trash.png';
         //img.alt = "Remover usuário";
@@ -82,8 +97,9 @@
       }
     });
 
-    function removeTask (event) {
-      let participants = JSON.parse(document.getElementById('participants').value);
+    function removeTask (e) {
+      let event = e || window.event;
+      var participants = JSON.parse(document.getElementById('participants').value);
       var positionUser;
       var divChildren = document.getElementById('addedParcipants').children;
       var userId = event.target.id;

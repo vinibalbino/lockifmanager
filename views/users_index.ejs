@@ -35,7 +35,7 @@
       <div class="usersList">
         <ul> 
           <% users.forEach(function(users) { %>
-          <li><p> <%= users.name %> - CPF: <%= users.cpf %> - Data de nascimento : <%= users.birth_date %></p><a href="/user/<%= users.cpf %>">Vizualizar o usuário</a></li>
+          <li><p> <%= users.name %> - CPF: <%= users.cpf %> - Data de nascimento : <%= users.birth_date.getDate()%>/<%= users.birth_date.getMonth()+1 %>/<%=users.birth_date.getFullYear()%> </p><a href="/user/<%= users.cpf %>">Vizualizar o usuário</a></li>
           <% }); %>
         </ul> 
       </div>  

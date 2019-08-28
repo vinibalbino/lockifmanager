@@ -68,6 +68,7 @@ ul {
   width: 22%;
   border: 0.5px solid gray;
   border-radius: 5px;
+  padding: 3px;
 }
 
 .forms button {
@@ -77,6 +78,13 @@ ul {
   border-radius: 5px;
 
 }
+
+textarea {
+  padding: 5px; 
+  text-align: justify;
+
+}
+
 textarea {
   width: 22%;
 }

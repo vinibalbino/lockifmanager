@@ -12,8 +12,9 @@ router.get('/add', function(req, res, next) {
 router.get('/:userId', function(req, res, next) {
   //TODO: Visualização do usuário
   var userId = req.params.userId;
-  User.find({cpf: userId}).then(function(user) { 
-    res.render('user', {'user': user[0]});
+  User.findOne( {cpf: userId} ).then(function(user) { 
+    console.log(user)
+    res.render('user', {'user': user});
   });
 });
 
@@ -36,12 +37,14 @@ router.get('/:userId/edit', function(req, res, next) {
 router.post('/add', function(req, res, next) {
   //TODO: Tratamento do formulário de criação de um usuário
   console.log(req.body);
+  var ObjectId = mongoose.Types.ObjectId;
   var name_user = req.body.name;
   var cpf_user = req.body.cpf;
   var birth_date = req.body.birth_date;
   User.find({cpf: cpf_user}).then(function(users) { 
     if (users.length == 0) {
       var user = new User({
+        _id: ObjectId,
         name: name_user,
         cpf: cpf_user,
         birth_date: birth_date,

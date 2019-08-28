@@ -18,14 +18,15 @@
         <%});%>
       </select>
     <label for="">Participante(s)</label>
-    <a href="" id="add">+</a>
+    
     <div id="divParticipants">
-      <select id="participantsChoice" name="" id="0">
+      <select id="participantsChoice" name="" >
         <option value=""></option>
         <% user.forEach(function(u){ %>
           <option value="<%= u._id%>"><%= u.name%></option>
         <%});%>
       </select>
+      <a href="" id="add">+</a>
         <input type="hidden" name="participants" id="participants" value="[]">
     </div>   
     <button>Adicionar Projeto</button>
