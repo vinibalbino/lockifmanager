@@ -4,7 +4,7 @@ var ObjectId = Schema.Types.ObjectId;
 
 
 var UserSchema = new Schema({
-  // _id: ObjectId,
+  _id: ObjectId,
   name: String,
   cpf: String,
   birth_date: {type: Date, default: Date.now},

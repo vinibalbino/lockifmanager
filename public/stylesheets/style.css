@@ -4,11 +4,16 @@
 }
 
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Open Sans", Helvetica, Arial, sans-serif;
+  margin-left: 5px;
 }
 
 input, textarea, select {
   border: 0.5px solid black;
+}
+
+.usersList ul li {
+  margin: 15px 0 5px 0;
 }
 
 main {
@@ -18,6 +23,7 @@ main {
 .bold {
   font-weight: bold;
   font-size: 18px;
+  margin-bottom: 5px;
 }
 
 header {
@@ -93,3 +99,22 @@ textarea {
   width: 2%;
   height: 20px; 
 }
+
+#addedParcipants{
+  margin: 5px 5px 5px 0;
+}
+
+.participants {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}   
+
+.participants a{
+  margin-top: 5px;
+}
+
+.participants a:last-child{
+  margin-bottom: 5px;
+}
+

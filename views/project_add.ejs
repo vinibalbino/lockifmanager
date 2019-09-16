@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Adicionar Usuário</title>
+    <title>LockIFManager</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
   </head>
   <body>
   <form class="forms" action="" method="post">
     <label for="">Nome do projeto</label>
-    <input type="text" name="name" value="" />
+    <input type="text" name="name" value="" required/>
     <label for="">Descrição</label>
-    <textarea name="description" id="" cols="30" rows="5"></textarea>
+    <textarea name="description" id="" cols="30" rows="5" required></textarea>
     <label for="">Coordenador</label>
-    <select name="coordinator" id="coordinator">
-        <option value=""></option>
-        <% user.forEach(function(u){ %>
-          <option value="<%= u._id%>"><%= u.name%></option>
-        <%});%>
-      </select>
+    <div>
+      <select name="coordinator" id="coordinator">
+          <option value=""></option>
+          <% user.forEach(function(u){ %>
+            <option value="<%= u._id%>"><%= u.name%></option>
+          <%});%>
+        </select>
+    </div>    
     <label for="">Participante(s)</label>
     
     <div id="divParticipants">

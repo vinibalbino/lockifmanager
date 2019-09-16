@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Adicionar Usuário</title>
+    <title>LockIFManager</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
@@ -20,6 +20,17 @@
           <a href="<%= user.cpf%>/delete">Sim</a>
           <a href="">Não</a>
         </div>
+      </div>
+      <div>
+        <p>Projetos que participa:</p>
+        <%(user.projects).forEach(function(userProject){ %>
+           <a href="../project/<%= userProject._id %>"><%= userProject.name %></a>
+        <% }); %>       
+      </div>
+      <div>
+        <% if(error != false){ %>
+          <p>Necessário remover o usuário do projeto primeiro</p>
+        <%}%>
       </div>
     </main>
   </body>
