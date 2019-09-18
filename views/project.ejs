@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LockIFManager</title>
+    <title>Adicionar Usuário</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, user-scalable=no"/>
   </head>
   <body>
     <main>
@@ -14,15 +12,12 @@
         <p>Criado em: <%= project.create_date.getDate() %>/<%= project.create_date.getMonth()+1 %>/<%= project.create_date.getFullYear() %></p>
         <div>
           <p class="bold">Coordenador</p>
-          <a href="../user/<%=coordinator.cpf%>"><%=coordinator.name %></a>
-        </div>  
-        <div class="participants">
+          <p><%= coordinator.name %></p>
           <p class="bold">Participantes</p>
           <% userNames.forEach(function(user){%>
-            <a href='../../user/<%=user.cpf%>'><%= user.name %></a>
-            <a href="./userproject/remove">X</a>
+            <p><%= user.name %></p>
           <%});%>
-        </div>  
+        </div>
       </div>
       <div>
         <a href="<%= project._id%>/edit">Editar Projeto</a>
