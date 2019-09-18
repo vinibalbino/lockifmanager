@@ -9,9 +9,9 @@ var UserSchema = new Schema({
   cpf: String,
   birth_date: {type: Date, default: Date.now},
   // finger_print: String,
-  // photo: String,
   projects: [{type: ObjectId, ref: 'Project'}],
-  // groups: [String]
+  active: {type: Boolean, default: true},
+  blocked: {type: Boolean, default: false},
 });
 
 User = mongoose.model("User", UserSchema);
