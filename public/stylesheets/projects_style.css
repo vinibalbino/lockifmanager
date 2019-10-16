@@ -222,6 +222,10 @@ h3 {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
 
+#add {
+    width: 100px;
+    height: auto;
+  }
 
 
 /* .dropdown-item {
