@@ -2,64 +2,121 @@
 <html>
   <head>
     <title>Adicionar Usuário</title>
-    <link rel='stylesheet' href='/stylesheets/projects_style.css' />
+    <link rel='stylesheet' href='/stylesheets/header.css' />
+    <link rel='stylesheet' href='/stylesheets/index.css' />
     <link rel='stylesheet' href='/stylesheets/footer.css' />
   </head>
   <body>
     <header>
+      <div class="logo">
+        <a href="/"><h1>LockIF<span class="logo-detail">Manager</span></h1></a>
+      </div>
 
-      <div class="navContainer">
-        <nav class="headerNav">
-          <img src="" alt=""/>
-          <ul class="nav_bar">
-    
-            <div class="logo">
-              <h1><a href="/"><span class="thinnerLogo">LockIF</span>Manager</a></h1>
-            </div>
-    
-            <div class="home">
-              <li class="nav_link"><a href="/">Home</a></li>
-            </div>
-    
-            <div class="project">
-              <li class="nav_link"><a>Projeto<a>
-                  <ul class="dropdown">
-                    <li class="dropdown-item"><a href="/project/add">Adicionar projeto</a></li>
-                    <li class="dropdown-item"><a href="/projects">Listar projetos</a></li>        
-                  </ul>
-                </li>
-              </div>
-    
-              <div class="user">
-                <li class="nav_link"><a>Usuário </a>
-                  <ul class="dropdown">
-                    <li class="dropdown-item"><a href="/user/add">Adicionar usuário</a></li>
-                    <li class="dropdown-item"><a href="/users">Listar usuário</a></li>
-                  </ul>
-                </li>
-              </div>
-    
-            </ul>
-          </nav>
+      <div class="user">
+        <div class="link-area-header">
+          <div class="access-btn-header">
+            <a href="/">Acessar</a>
+          </div>
+          <div class="green-bar-header"></div>
         </div>
-    
-      </header>
+
+        <div class="link-area-header">
+          <div class="access-btn-header">
+            <a href="/">Cadastrar-se</a>
+          </div>
+          <div class="green-bar-header"></div>
+        </div>
+        
+      </div>
+    </header>
 
     <main>
-
-      <h2>Usuários cadastrados</h2>
-      <div class="usersList">
-          <% users.forEach(function(users) { %>
-
-          <div class="userTable">
-            <h3> <%= users.name %> </h3>
-              CPF: <%= users.cpf %> - Data de nascimento : <%= users.birth_date.getDate()%>/<%= users.birth_date.getMonth()+1 %>/<%=users.birth_date.getFullYear()%> </p>
-              <a class="description" href="/user/<%= users.cpf %>">Vizualizar o usuário</a>
+        <div class="menu">
+            <h2></h2>
+    
+            <div class="links">
+    
+              <div class="link-area">
+                <div class="access-header">
+                  <img src="/img/project.png" alt="" width="24px" height="auto"/>
+                  <h2>Projetos</h2> 
+                </div>
+              </div>
+    
+              <a href="/projects">
+                <div class="link-area">
+                  <div class="access-btn">
+                    <img src="/img/project.png" alt="" width="20px" height="auto"/>
+                    <p>Listar projetos</p> 
+                  </div>
+                  <div class="green-bar"></div>
+                </div>
+              </a>
+    
+              <a href="/project/add">
+                <div class="link-area">
+                  <div class="access-btn">
+                    <img src="/img/add_project.png" alt="" width="20px" height="auto"/>
+                    <p>Adicionar Projetos</p> 
+                  </div>
+                  <div class="green-bar"></div>
+                </div>
+              </a>
+    
+              <div class="link-area">
+                  <div class="access-header">
+                    <img src="/img/user.png" alt="" width="24px" height="auto"/>
+                    <h2>Usuários</h2> 
+                  </div>
+                </div>
+                  
+              <a href="/users">
+                <div class="link-area">
+                  <div class="access-btn">
+                    <img src="/img/user.png" alt="" width="20px" height="auto"/>
+                    <p>Usuários</p> 
+                  </div>
+                  <div class="green-bar"></div>
+                </div>
+              </a>
+    
+              <a href="/user/add">
+                <div class="link-area">
+                  <div class="access-btn">
+                    <img src="/img/add_user.png" alt="" width="20px" height="auto"/>
+                    <p>Adicionar Usuários</p> 
+                  </div>
+                  <div class="green-bar"></div>
+                </div>
+              </a>
+            </div>
+            <div class="footer"> 
+              <h4>Feito por Vinicius e Emanuel em Dourados MS</h4>
+              <h3>GEDAE - LockIFManeger© 2019</h3>
+            </div>
           </div>
 
-          <% }); %>
+          <div class="main">
+            <div class="cont-header">
+                <span class="title">Usuários</span>
+                <span class="routes">home>users</span>
+            </div>
 
-      </div>  
+            <div class="content">
+              <h2>Usuários cadastrados</h2>
+
+              <div class="user-list">
+                <% users.forEach(function(users) { %>
+                  <div class="user-table">
+                    <h3> <%= users.name %> </h3>
+                    <p>CPF: <%= users.cpf %></p>
+                    <p>Data de nascimento : <%= users.birth_date.getDate()%>/<%= users.birth_date.getMonth()+1 %>/<%=users.birth_date.getFullYear()%> </p>
+                    <a class="description" href="/user/<%= users.cpf %>">Mais detalhes</a>
+                  </div>
+                <% }); %>
+            </div>
+          </div>
+        </div> 
     </main>
   </body>
 </html>
