@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Adicionar Usuário</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <form class="forms" action="./edit" method="post">
+        <label for="name">IP Wemos</label>
+        <input type="text" id="name" name="ipWemos" value="<%= wemos.IP %>" />
+        <label for="description">Description</label>
+        <textarea name="description" id="description" cols="30" rows="10"><%= wemos.description %></textarea>
+        <button>Editar Wemos</button>
+    </form>
+  </body>
+</html>

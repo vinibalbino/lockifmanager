@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var mongoose = require('mongoose');
-var Wemos = require('../models/wemos')
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
+const Wemos = require('../models/wemos')
 
 router.get('/', function(req,res) {
     Wemos.find().then(function(wemos){
@@ -13,16 +13,51 @@ router.get('/add', function(req,res){
     res.render('wemos_add');
 });
 
+router.get('/:_idWemos', function(req,res){
+    const { _idWemos} = req.params;
+    Wemos.findOne({ _id :_idWemos }).then(function(wemos){
+        console.log(wemos)
+        res.render('wemos', {'wemos': wemos });
+    });
+})
+
+router.get('/:_idWemos/edit', function(req,res){
+    const { _idWemos} = req.params;
+    Wemos.findOne({ _id :_idWemos }).then(function(wemos){
+        console.log(wemos)
+        res.render('wemos_edit', {'wemos': wemos });
+    });
+})
+
+
 router.post('/add', function(req, res){
-    var {ipWemos, description} = req.body;
-    var ObjectId = mongoose.Types.ObjectId(); 
+    const { ipWemos, description } = req.body;
+    let ObjectId = mongoose.Types.ObjectId(); 
     if(ipWemos != "" && description != "" ){
-        var wemos = new Wemos({
+        const wemos = new Wemos({
             _id: ObjectId,
             IP: ipWemos,
             description: description,
-        });   
-    }
+            enable: false,
+        });  
+        wemos.save(function(error){
+            if(error){
+               res.render('error', {error: error});
+            }else{
+                res.redirect('/wemos');
+            }
+        });     
+    } 
+});
+
+router.post('/:_idWemos/edit', function(req,res) {
+    const { ipWemos } = req.parms;
+    const { description, state } = req.body;
+    Wemos.findOneAndUpdate({ IP: ipWemos} ,  {
+        description: description,
+    }).then(function(callback){
+        res.redirect('/wemos');
+    })
 });
 
 module.exports = router;

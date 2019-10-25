@@ -6,7 +6,6 @@ var WemosSchema = new Schema({
   _id: ObjectId,
   token: String,
   macAdress: String,
-  enable: {type: Boolean, default: false},
   IP: { type: String, required: true},
   description: { type: String, required: true}
 });
