@@ -2,91 +2,145 @@
 <html>
   <head>
     <title>Adicionar Usuário</title>
-    <link rel='stylesheet' href='/stylesheets/projects_style.css' />
+    <link rel='stylesheet' href='/stylesheets/header.css' />
+    <link rel='stylesheet' href='/stylesheets/index.css' />
     <link rel='stylesheet' href='/stylesheets/footer.css' />
   </head>
   <body>
 
-      <header>
-
-          <div class="navContainer">
-            <nav class="headerNav">
-              <img src="" alt=""/>
-              <ul class="nav_bar">
-    
-                <div class="logo">
-                  <h1><a href="/"><span class="thinnerLogo">LockIF</span>Manager</a></h1>
-                </div>
-    
-                <div class="home">
-                  <li class="nav_link"><a href="/">Home</a></li>
-                </div>
-    
-                <div class="project">
-                  <li class="nav_link"><a>Projeto<a>
-                    <ul class="dropdown">
-                      <li class="dropdown-item"><a href="/project/add">Adicionar projeto</a></li>
-                      <li class="dropdown-item"><a href="/projects">Listar projetos</a></li>        
-                    </ul>
-                  </li>
-                </div>
-    
-                <div class="user">
-                  <li class="nav_link"><a>Usuário </a>
-                    <ul class="dropdown">
-                      <li class="dropdown-item"><a href="/user/add">Adicionar usuário</a></li>
-                      <li class="dropdown-item"><a href="/users">Listar usuário</a></li>
-                    </ul>
-                  </li>
-                </div>
-    
-              </ul>
-            </nav>
+    <header>
+      <div class="logo">
+        <a href="/"><h1>LockIF<span class="logo-detail">Manager</span></h1></a>
+      </div>
+      
+      <div class="user">
+        <div class="link-area-header">
+          <div class="access-btn-header">
+            <a href="/">Acessar</a>
           </div>
-    
-        </header>
+          <div class="green-bar-header"></div>
+        </div>
 
-    <section class="projectAdd">
-      <form  class="main" class="forms" action="" method="post">
-        <label for="">Nome do projeto</label>
-        <input type="text" name="name" value="" />
-        <label for="">Descrição</label>
-        <textarea name="description" id="" cols="30" rows="5"></textarea>
-        <label for="">Coordenador</label>
-        <select name="coordinator" id="coordinator">
-            <option value=""></option>
-            <% user.forEach(function(u){ %>
-              <option value="<%= u._id%>"><%= u.name%></option>
-            <%});%>
-          </select>
-        <label for="">Participante(s)</label>
+        <div class="link-area-header">
+          <div class="access-btn-header">
+            <a href="/">Cadastrar-se</a>
+          </div>
+          <div class="green-bar-header"></div>
+        </div>
         
-        <div id="divParticipants">
-          <select id="participantsChoice" name="" >
-            <option value=""></option>
-            <% user.forEach(function(u){ %>
-              <option value="<%= u._id%>"><%= u.name%></option>
-            <%});%>
-          </select>
-          <a href="" id="add">+</a>
-            <input type="hidden" name="participants" id="participants" value="[]">
-        </div>   
-        <button class="addButton">Adicionar Projeto</button>
-      </form>
-    </section>  
+      </div>
+    </header>
 
-  <div id="addedParcipants"></div>
+    <main>
+      <div class="menu">
+        <h2></h2>
 
+        <div class="links">
 
-    <div class="footer">
-      <h3>Feito <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Love_Heart_SVG.svg/645px-Love_Heart_SVG.svg.png" height="16px" width="auto">  -->
-        por Vinicius e Emanuel em Dourados MS</h3>
-      <h4>GEDAE - LockIFManager© 2019</h4>
-    </div>
+          <div class="link-area">
+            <div class="access-header">
+              <img src="/img/project.png" alt="" width="24px" height="auto"/>
+              <h2>Projetos</h2> 
+            </div>
+          </div>
 
-  </footer>
-    
+          <a href="/projects">
+            <div class="link-area">
+              <div class="access-btn">
+                <img src="/img/project.png" alt="" width="20px" height="auto"/>
+                <p>Listar projetos</p> 
+              </div>
+              <div class="green-bar"></div>
+            </div>
+          </a>
+
+          <a href="/project/add">
+            <div class="link-area">
+              <div class="access-btn">
+                <img src="/img/add_project.png" alt="" width="20px" height="auto"/>
+                <p>Adicionar Projetos</p> 
+              </div>
+              <div class="green-bar"></div>
+            </div>
+          </a>
+
+          <div class="link-area">
+              <div class="access-header">
+                <img src="/img/user.png" alt="" width="24px" height="auto"/>
+                <h2>Usuários</h2> 
+              </div>
+            </div>
+              
+          <a href="/users">
+            <div class="link-area">
+              <div class="access-btn">
+                <img src="/img/user.png" alt="" width="20px" height="auto"/>
+                <p>Usuários</p> 
+              </div>
+              <div class="green-bar"></div>
+            </div>
+          </a>
+
+          <a href="/user/add">
+            <div class="link-area">
+              <div class="access-btn">
+                <img src="/img/add_user.png" alt="" width="20px" height="auto"/>
+                <p>Adicionar Usuários</p> 
+              </div>
+              <div class="green-bar"></div>
+            </div>
+          </a>
+        </div>
+        <div class="footer"> 
+          <h4>Feito por Vinicius e Emanuel em Dourados MS</h4>
+          <h3>GEDAE - LockIFManeger© 2019</h3>
+        </div>
+      </div>
+
+        <div class="main">
+          <div class="cont-header">
+              <span class="title">Projetos</span>
+              <span class="routes">home>projects>add</span>
+          </div>
+
+          <div class="content">
+
+            <form class="forms" action="" method="post">
+              <label for="">Nome do projeto</label>
+              <input type="text" name="name" value="" />
+              <label for="">Descrição</label>
+              <textarea name="description" id="" cols="30" rows="5"></textarea>
+              <label for="">Coordenador</label>
+              <select name="coordinator" id="coordinator">
+                  <option value=""></option>
+                  <% user.forEach(function(u){ %>
+                    <option value="<%= u._id%>"><%= u.name%></option>
+                  <%});%>
+                </select>
+              <label for="">Participante(s)</label>
+                  
+              <div id="divParticipants">
+                <select id="participantsChoice" name="" >
+                  <option value=""></option>
+                  <% user.forEach(function(u){ %>
+                    <option value="<%= u._id%>"><%= u.name%></option>
+                  <%});%>
+                </select>
+                <a href="" id="add">+</a>
+                  <input type="hidden" name="participants" id="participants" value="[]">
+              </div>   
+              <div class="btn-area">
+                <button class="add-btn">Adicionar projeto</button>
+              </div>
+            </form>          
+            <div id="addedParcipants"></div>
+
+          </div>
+        </div>
+      </div>    
+    </main>
   </body>
+
   <script type='application/javascript'>
     const button = document.getElementById('add');
     var logica = true;
