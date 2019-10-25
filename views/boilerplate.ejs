@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Adicionar Usuário</title>
+    <title>LockIFManager</title>
     <link rel='stylesheet' href='/stylesheets/header.css' />
     <link rel='stylesheet' href='/stylesheets/index.css' />
     <link rel='stylesheet' href='/stylesheets/footer.css' />
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
   </head>
   <body>
+
     <header>
       <div class="logo">
         <a href="/"><h1>LockIF<span class="logo-detail">Manager</span></h1></a>
@@ -96,27 +101,10 @@
             </div>
           </div>
 
-          <div class="main">
-            <div class="cont-header">
-                <span class="title">Usuários</span>
-                <span class="routes">home>users</span>
-            </div>
-
-            <div class="content">
-              <h2>Usuários cadastrados</h2>
-
-              <div class="user-list">
-                <% users.forEach(function(users) { %>
-                  <div class="user-table">
-                    <h3> <%= users.name %> </h3>
-                    <p>CPF: <%= users.cpf %></p>
-                    <p>Data de nascimento : <%= users.birth_date.getDate()+1%>/<%= users.birth_date.getMonth()+1 %>/<%=users.birth_date.getFullYear()%> </p>
-                    <a class="description" href="/user/<%= users.cpf %>">Mais detalhes</a>
-                  </div>
-                <% }); %>
-            </div>
-          </div>
-        </div> 
+        <div class="main">
+          <%- body -%>
+        </div>
     </main>
   </body>
 </html>
+

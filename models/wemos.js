@@ -10,6 +10,6 @@ var WemosSchema = new Schema({
   description: { type: String, required: true}
 });
 
-Wemos = mongoose.model("Wevos", WemosSchema);
+Wemos = mongoose.model("Wemos", WemosSchema);
 
 module.exports = Wemos;
