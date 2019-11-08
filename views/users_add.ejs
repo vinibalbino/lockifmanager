@@ -1,123 +1,25 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Adicionar Usuário</title>
-    <link rel='stylesheet' href='/stylesheets/header.css' />
-    <link rel='stylesheet' href='/stylesheets/index.css' />
-    <link rel='stylesheet' href='/stylesheets/footer.css' />
-  </head>
-  <body>
-
-    <header>
-      <div class="logo">
-        <a href="/"><h1>LockIF<span class="logo-detail">Manager</span></h1></a>
-      </div>
-
-      <div class="user">
-        <div class="link-area-header">
-          <div class="access-btn-header">
-            <a href="/">Acessar</a>
+<% layout('boilerplate') -%>
+<div class="main">
+  <div class="main">
+    <div class="cont-header">
+      <span class="title">Adicionar Usuário</span>
+      <span class="routes">home>user>add</span>
+    </div>
+<div class="content">
+    <div class="main-forms">
+        <form class="forms" action="/user/add" method="post">
+          <label for="name">Nome Completo</label>
+          <input id="name" type="text" name="name" value="" required/>
+          <label for="cpf">CPF</label>
+          <input id="cpf" type="number" name="cpf" value="" maxlength="11" required/>
+          <label for="birth_date">Data de nascimento</label>
+          <input id="birth_date" type="date" name="birth_date" required/>
+          <% if(error != null) { %>
+              <h1><%= error %></h1>
+          <%}%> 
+          <div class="btn-area">
+            <button class="add-btn">Adicionar usuário</button>
           </div>
-          <div class="green-bar-header"></div>
-        </div>
-
-        <div class="link-area-header">
-          <div class="access-btn-header">
-            <a href="/">Cadastrar-se</a>
-          </div>
-          <div class="green-bar-header"></div>
-        </div>
-        
-      </div>
-    </header>
-
-    <main>
-        <div class="menu">
-            <h2></h2>
-    
-            <div class="links">
-    
-              <div class="link-area">
-                <div class="access-header">
-                  <h2>Projetos</h2> 
-                </div>
-              </div>
-    
-              <a href="/projects">
-                <div class="link-area">
-                  <div class="access-btn">
-                    <img src="/img/project.png" alt="" width="20px" height="auto"/>
-                    <p>Listar projetos</p> 
-                  </div>
-                  <div class="green-bar"></div>
-                </div>
-              </a>
-    
-              <a href="/project/add">
-                <div class="link-area">
-                  <div class="access-btn">
-                    <img src="/img/add_project.png" alt="" width="20px" height="auto"/>
-                    <p>Adicionar Projetos</p> 
-                  </div>
-                  <div class="green-bar"></div>
-                </div>
-              </a>
-    
-              <div class="link-area">
-                  <div class="access-header">
-                    <h2>Usuários</h2> 
-                  </div>
-                </div>
-                  
-              <a href="/users">
-                <div class="link-area">
-                  <div class="access-btn">
-                    <img src="/img/user.png" alt="" width="20px" height="auto"/>
-                    <p>Usuários</p> 
-                  </div>
-                  <div class="green-bar"></div>
-                </div>
-              </a>
-    
-              <a href="/user/add">
-                <div class="link-area">
-                  <div class="access-btn">
-                    <img src="/img/add_user.png" alt="" width="20px" height="auto"/>
-                    <p>Adicionar Usuários</p> 
-                  </div>
-                  <div class="green-bar"></div>
-                </div>
-              </a>
-            </div>
-            <div class="footer"> 
-              <h4>Feito por Vinicius e Emanuel em Dourados MS</h4>
-              <h3>GEDAE - LockIFManeger© 2019</h3>
-            </div>
-          </div>
-      <div class="main">
-          <div class="main">
-            <div class="cont-header">
-              <span class="title">Adicionar Usuário</span>
-              <span class="routes">home>user>add</span>
-            </div>
-        <div class="content">
-            <div class="main-forms">
-                <form class="forms" action="/user/add" method="post">
-                  <label for="name">Nome Completo</label>
-                  <input id="name" type="text" name="name" value="" required/>
-                  <label for="cpf">CPF</label>
-                  <input id="cpf" type="number" name="cpf" value="" maxlength="11" required/>
-                  <label for="birth_date">Data de nascimento</label>
-                  <input id="birth_date" type="date" name="birth_date" required/>
-                  <% if(error != null) { %>
-                      <h1><%= error %></h1>
-                  <%}%> 
-                  <div class="btn-area">
-                    <button class="add-btn">Adicionar usuário</button>
-                  </div>
-                </form>
-            </div>
-      </div>
-    </main>
-  </body>
-</html>
+        </form>
+    </div>
+</div>

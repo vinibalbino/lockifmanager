@@ -27,7 +27,17 @@ router.get('/:_idWemos/edit', function(req,res){
         console.log(wemos)
         res.render('wemos_edit', {'wemos': wemos });
     });
-})
+});
+
+
+router.get('/wemos/:_idwemos/delete',function(req, res) {
+    const { _idwemos } = req.params;
+    Wemos.findOne( { _id: _idwemos } ).then(function(user){
+        User.findOneAndRemove({cpf: userId}, function(callback) {
+        res.redirect('/users');
+        });
+    });
+});
 
 
 router.post('/add', function(req, res){
@@ -51,8 +61,8 @@ router.post('/add', function(req, res){
 });
 
 router.post('/:_idWemos/edit', function(req,res) {
-    const { ipWemos } = req.parms;
-    const { description, state } = req.body;
+    const { ipWemos } = req.param;
+    const { description } = req.body;
     Wemos.findOneAndUpdate({ IP: ipWemos} ,  {
         description: description,
     }).then(function(callback){

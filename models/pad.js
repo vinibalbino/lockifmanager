@@ -1,12 +1,13 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const ObjectId = Schema.Types.ObjectId;
 
 
-var PadSchema = new Schema({
-  token: {type: String},
+const PadSchema = new Schema({
+  name: String,
+  _id: ObjectId,
   macAdress: {type: String,},
-  enable: {type: Boolean, default: false},
-  IP: {type: Date, default: Date.now},
+  token: { type: String},
   wemos: {type: String, ref: 'Wemos'},
 });
 
