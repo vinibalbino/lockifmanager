@@ -10,7 +10,7 @@ router.get('/', function(req,res) {
 })
 
 router.get('/add', function(req,res){
-    res.render('wemos_add');
+    res.render('wemos_add', {'wemos': ""});
 });
 
 router.get('/:_idWemos', function(req,res){
@@ -30,12 +30,10 @@ router.get('/:_idWemos/edit', function(req,res){
 });
 
 
-router.get('/wemos/:_idwemos/delete',function(req, res) {
+router.get('/:_idwemos/delete',function(req, res) {
     const { _idwemos } = req.params;
-    Wemos.findOne( { _id: _idwemos } ).then(function(user){
-        User.findOneAndRemove({cpf: userId}, function(callback) {
-        res.redirect('/users');
-        });
+    Wemos.findOneAndRemove({ _id: _idwemos }, function(callback) {
+        res.redirect('/wemos');
     });
 });
 
@@ -44,28 +42,35 @@ router.post('/add', function(req, res){
     const { ipWemos, description } = req.body;
     let ObjectId = mongoose.Types.ObjectId(); 
     if(ipWemos != "" && description != "" ){
-        const wemos = new Wemos({
-            _id: ObjectId,
-            IP: ipWemos,
-            description: description,
-            enable: false,
-        });  
-        wemos.save(function(error){
-            if(error){
-               res.render('error', {error: error});
+        Wemos.findOne( { IP: ipWemos } ).then(function(wemos){
+            if(wemos){
+                res.render('wemos_add', {'wemos': wemos })
             }else{
-                res.redirect('/wemos');
-            }
-        });     
-    } 
+                const wemos = new Wemos({
+                    _id: ObjectId,
+                    IP: ipWemos,
+                    description: description,
+                    enable: false,
+                });  
+                wemos.save(function(error){
+                    if(error){
+                       res.render('error', {error: error});
+                    }else{
+                        res.redirect('/wemos');
+                    }
+                });     
+            } 
+        });
+    };
 });
 
 router.post('/:_idWemos/edit', function(req,res) {
-    const { ipWemos } = req.param;
+    const { _idWemos } = req.params;
     const { description } = req.body;
-    Wemos.findOneAndUpdate({ IP: ipWemos} ,  {
+    Wemos.findByIdAndUpdate({ _id: _idWemos} ,  {
         description: description,
     }).then(function(callback){
+        console.log(callback)
         res.redirect('/wemos');
     })
 });

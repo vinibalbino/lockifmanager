@@ -1,7 +1,7 @@
 <% layout('boilerplate') -%>
-    <div class="main">
+<div class="main">
       <div class="cont-header">
-        <h2>Wemos Add</h2>
+        <h2>Adicionar Wemos</h2>
       </div>
       <div class="content">
         <form class="forms" action="/wemos/add/ " method="post">
@@ -13,5 +13,8 @@
             <button class="add-btn">Adicionar Wemos</button>
           </div>
         </form>
+        <%  if(wemos) { %>
+          <h3>Wemos Já existente</h3>
+        <%  } %>
       </div>
-    </div>
+</div>

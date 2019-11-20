@@ -4,6 +4,7 @@ const Pad = require('../models/pad')
 
 router.get('/', function(req, res, next) {
   Pad.find().then(function(pads) {
+    console.log(pads);
     res.render('pad_index', {'pads': pads});
   });
 });
