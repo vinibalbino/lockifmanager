@@ -27,7 +27,6 @@
           </div>
           <div class="green-bar-header"></div>
         </div>
-        
       </div>
     </header>
 
@@ -99,15 +98,15 @@
 
         <div class="main">
           <div class="cont-header">
-              <span class="title">Projetos</span>
-              <span class="routes">home>projects>add</span>
+            <span class="title">Projetos</span>
+            <span class="routes">home>projects>add</span>
           </div>
 
           <div class="content">
 
             <form class="forms" action="" method="post">
               <label for="">Nome do projeto</label>
-              <input type="text" name="name" value="" />
+              <input type="text" name="name" value="">
               <label for="">Descrição</label>
               <textarea name="description" id="" cols="30" rows="5"></textarea>
               <label for="">Coordenador</label>
@@ -126,7 +125,7 @@
                     <option value="<%= u._id%>"><%= u.name%></option>
                   <%});%>
                 </select>
-                <a href="" id="add">+</a>
+                <button id="add">+</button>
                   <input type="hidden" name="participants" id="participants" value="[]">
               </div>   
               <div class="btn-area">

@@ -7,6 +7,7 @@ var ReportSchema = new Schema({
     dateAcces: {type: Date, default: Date.now}
 });
 
+
 ReportCard = mongoose.model("Report", ReportSchema);
 
 module.exports = ReportCard;

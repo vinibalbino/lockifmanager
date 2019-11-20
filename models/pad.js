@@ -3,9 +3,9 @@ var Schema = mongoose.Schema;
 
 
 var PadSchema = new Schema({
-  token: {type: String},
-  macAdress: {type: String,},
-  enable: {type: Boolean, default: false},
+  token: ObjectId,
+  macAdress: String,
+  enable: String,
   IP: {type: Date, default: Date.now},
   wemos: {type: String, ref: 'Wemos'},
 });
