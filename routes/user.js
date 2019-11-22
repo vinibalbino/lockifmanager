@@ -48,9 +48,10 @@ router.post('/add', function(req, res, next) {
   var cpf_user = req.body.cpf;
   var birth_date = req.body.birth_date;
   var ObjectId = mongoose.Types.ObjectId();
+  let cpfLength = cpf_user.length;
 
   User.find({cpf: cpf_user}).then(function(users) { 
-    if (users.length == 0) {
+    if(users.length == 0 && cpfLength == 11 ) {
       var user = new User({
         _id: ObjectId,
         name: name_user,
@@ -64,8 +65,10 @@ router.post('/add', function(req, res, next) {
           res.redirect('/users');
       });        
     }
-    else {
+    else if(users.length != 0) {
       res.render('users_add', {error: 'CPF já cadastrado'});
+    }else {
+      res.render('users_add', {error: 'CPF inválido '})
     }
   });
 });

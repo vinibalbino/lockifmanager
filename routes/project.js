@@ -69,6 +69,7 @@ router.post('/add/', function(req, res, next) {
   participants = JSON.parse(participants);
   var ObjectId = mongoose.Types.ObjectId();
 
+
   var project = new Project({
       _id: ObjectId,
       name: name_project,
