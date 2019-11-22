@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Adicionar Usuário</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <main>
+      <div>
+        <h1>Descrição: </h1>
+        <p><%=wemos.description %></p>
+      </div>
+      <div>
+          <p>Ip: <%=wemos.IP %></p>
+      </div>
+      
+      <a href="<%= wemos._id%>/edit">Editar Usuário</a>
+      <a href="">Remover usuário</a>
+      <div class="modal hidden">
+        <div>
+          <p>Deseja Realmente deletar este usuário</p>
+          <a href="<%= wemos._id%>/delete">Sim</a>
+          <a href="">Não</a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

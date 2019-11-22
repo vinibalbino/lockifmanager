@@ -1,0 +1,15 @@
+<% layout('boilerplate') -%>
+  <div class="cont-header">
+    <h2>Wemos Edit</h2>
+  </div>
+<div class="content">
+    <form class="forms" action="./edit" method="post">
+        <label for="name">IP Wemos</label>
+        <input type="text" id="name" name="ipWemos" value="<%= wemos.IP %>" disabled/>
+        <label for="description">Description</label>
+        <textarea name="description" id="description" cols="30" rows="10"><%= wemos.description %></textarea>
+        <div class="btn-area">
+          <button class="add-btn">Editar Wemos</button>
+        </div>
+    </form>
+</div>

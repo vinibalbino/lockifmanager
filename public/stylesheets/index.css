@@ -250,3 +250,9 @@ form input:focus {
 .forms label {
   color: rgb(44, 44, 44);
 }
+
+.title{
+  font-size: 32px;
+  font-weight: 300;
+  color: black;
+}

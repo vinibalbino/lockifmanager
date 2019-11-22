@@ -17,12 +17,6 @@ router.get('/:projectId', function(req, res, next) {
     Project.findOne({_id: projectId}).populate('users').populate('coordinator').then(function(project) { 
       console.log(project);
       res.render('project', {'project': project, 'userNames': project.users, 'coordinator': project.coordinator });
-      // User.find({ _id: project[0].users }).then(function(userNames){
-      //   User.find({ _id: project[0].coordinator}).then(function(Coordinator){
-      //     console.log(Coordinator);
-      //     res.render('project', {'project': project[0], 'userNames': userNames, 'coordinator': Coordinator });
-      //   });
-      // });
     });
 });
 

@@ -1,122 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Adicionar Usuário</title>
-    <link rel='stylesheet' href='/stylesheets/header.css' />
-    <link rel='stylesheet' href='/stylesheets/index.css' />
-    <link rel='stylesheet' href='/stylesheets/footer.css' />
-  </head>
-  <body>
-    <header>
-      <div class="logo">
-        <a href="/"><h1>LockIF<span class="logo-detail">Manager</span></h1></a>
-      </div>
+<% layout('boilerplate') -%>
+<div class="main">
+  <div class="cont-header">
+      <span class="title">Usuários</span>
+      <span class="routes">home>users</span>
+  </div>
 
-      <div class="user">
-        <div class="link-area-header">
-          <div class="access-btn-header">
-            <a href="/">Acessar</a>
-          </div>
-          <div class="green-bar-header"></div>
+  <div class="content">
+    <h2>Usuários cadastrados</h2>
+
+    <div class="user-list">
+      <% users.forEach(function(users) { %>
+        <div class="user-table">
+          <h3> <%= users.name %> </h3>
+          <p>CPF: <%= users.cpf %></p>
+          <p>Data de nascimento : <%= users.birth_date.getDate()+1%>/<%= users.birth_date.getMonth()+1 %>/<%=users.birth_date.getFullYear()%> </p>
+          <a class="description" href="/user/<%= users.cpf %>">Mais detalhes</a>
         </div>
-
-        <div class="link-area-header">
-          <div class="access-btn-header">
-            <a href="/">Cadastrar-se</a>
-          </div>
-          <div class="green-bar-header"></div>
-        </div>
-        
-      </div>
-    </header>
-
-    <main>
-        <div class="menu">
-            <h2></h2>
-    
-            <div class="links">
-    
-              <div class="link-area">
-                <div class="access-header">
-                  <img src="/img/project.png" alt="" width="24px" height="auto"/>
-                  <h2>Projetos</h2> 
-                </div>
-              </div>
-    
-              <a href="/projects">
-                <div class="link-area">
-                  <div class="access-btn">
-                    <img src="/img/project.png" alt="" width="20px" height="auto"/>
-                    <p>Listar projetos</p> 
-                  </div>
-                  <div class="green-bar"></div>
-                </div>
-              </a>
-    
-              <a href="/project/add">
-                <div class="link-area">
-                  <div class="access-btn">
-                    <img src="/img/add_project.png" alt="" width="20px" height="auto"/>
-                    <p>Adicionar Projetos</p> 
-                  </div>
-                  <div class="green-bar"></div>
-                </div>
-              </a>
-    
-              <div class="link-area">
-                  <div class="access-header">
-                    <img src="/img/user.png" alt="" width="24px" height="auto"/>
-                    <h2>Usuários</h2> 
-                  </div>
-                </div>
-                  
-              <a href="/users">
-                <div class="link-area">
-                  <div class="access-btn">
-                    <img src="/img/user.png" alt="" width="20px" height="auto"/>
-                    <p>Usuários</p> 
-                  </div>
-                  <div class="green-bar"></div>
-                </div>
-              </a>
-    
-              <a href="/user/add">
-                <div class="link-area">
-                  <div class="access-btn">
-                    <img src="/img/add_user.png" alt="" width="20px" height="auto"/>
-                    <p>Adicionar Usuários</p> 
-                  </div>
-                  <div class="green-bar"></div>
-                </div>
-              </a>
-            </div>
-            <div class="footer"> 
-              <h4>Feito por Vinicius e Emanuel em Dourados MS</h4>
-              <h3>GEDAE - LockIFManeger© 2019</h3>
-            </div>
-          </div>
-
-          <div class="main">
-            <div class="cont-header">
-                <span class="title">Usuários</span>
-                <span class="routes">home>users</span>
-            </div>
-
-            <div class="content">
-              <h2>Usuários cadastrados</h2>
-
-              <div class="user-list">
-                <% users.forEach(function(users) { %>
-                  <div class="user-table">
-                    <h3> <%= users.name %> </h3>
-                    <p>CPF: <%= users.cpf %></p>
-                    <p>Data de nascimento : <%= users.birth_date.getDate()%>/<%= users.birth_date.getMonth()+1 %>/<%=users.birth_date.getFullYear()%> </p>
-                    <a class="description" href="/user/<%= users.cpf %>">Mais detalhes</a>
-                  </div>
-                <% }); %>
-            </div>
-          </div>
-        </div> 
-    </main>
-  </body>
-</html>
+      <% }); %>
+  </div>
+</div>
+</div> 

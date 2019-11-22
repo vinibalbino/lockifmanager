@@ -75,9 +75,17 @@ router.post('/add', function(req, res, next) {
 
 router.post('/:userId', function(req, res, next) {
   //TODO: Tratamento do formulário de edição de um usuário
-  var userId = req.params.userId;
-  User.findOneAndUpdate( {cpf: userId}, req.body).then(function(callback) {
-      res.redirect('/users')
+  const userId = req.params.userId;
+  const { name, cpf, birth_date } = req.body
+  User.findOneAndUpdate( {cpf: userId}, {
+    name: name,
+    cpf: cpf,
+    birth_date: birth_date,
+    active: true,
+    blocked: false,
+  }).then(function(callback) {
+    console.log(callback);
+    res.redirect('/users')
   });
 });
 
