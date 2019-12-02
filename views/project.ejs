@@ -1,25 +1,36 @@
 <% layout('boilerplate') -%>
-<div>
-  <h1><%= project.name %></h1>
-  <p><%= project.description %></p>
-  <p>Criado em: <%= project.create_date.getDate() %>/<%= project.create_date.getMonth()+1 %>/<%= project.create_date.getFullYear() %></p>
-  <div>
-    <p class="bold">Coordenador</p>
-    <p><%= coordinator.name %></p>
-    <p class="bold">Participantes</p>
-    <% userNames.forEach(function(user){%>
-      <a href="/user/<%= user.cpf %>"><%= user.name %></a>
-    <%});%>
+<div class="main">
+  <div class="cont-header">
+    <h2 class="title"><%= project.name %></h2>
+    <span class="routes">home>projects><%= project.name %></span>
   </div>
-</div>
-<div>
-  <a href="<%= project._id%>/edit">Editar Projeto</a>
-  <a href="">Remover Projeto</a>
-</div>
-<div class="modal hidden">
-  <div>
-    <p>Deseja Realmente deletar este projeto</p>
-    <a href="<%= project._id%>/delete">Sim</a>
-    <a href="">Não</a>
+
+  <div class="content">
+    <p><%= project.description %></p>
+    <p class="date">Criado em: <%= project.create_date.getDate() %>/<%= project.create_date.getMonth()+1 %>/<%= project.create_date.getFullYear() %></p>
+      
+    <div>
+      <h3>Coordenador</h3>
+      <p><%= coordinator.name %></p>
+
+      <h3>Participantes</h3>
+      <% userNames.forEach(function(user){%>
+        <a class="description" href="/user/<%= user.cpf %>"><%= user.name %></a>
+      <%});%>
+    </div>
+
+    <div class="edit">
+      <a class="description" href="<%= project._id%>/edit">Editar Projeto</a>
+      <a class="description" href="">Remover Projeto</a>
+    </div>
+
+    <div class="modal-delete">
+      <p>Deseja Realmente deletar este projeto</p>
+
+      <div class="btn-box">
+          <a class="description" href="<%= project._id%>/delete">Sim</a>
+          <a class="description" href="">Não</a>
+      </div>
+    </div>
   </div>
 </div>

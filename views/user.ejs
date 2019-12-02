@@ -1,24 +1,26 @@
 <% layout('boilerplate') -%>
-<div>
-  <h1><%= user.name %></h1>
-  <p>CPF: <%= user.cpf %></p>
-  <p>Data Nascimento: <%= user.birth_date.getDate()+1 %>/ <%= user.birth_date.getMonth()+1 %>/ <%= user.birth_date.getFullYear() %></p>
-</div>
-<p>Projetos Que participa</p>
+<div class="main">
   <div>
-    <ul>
-      <%(user.projects).forEach((project) => { %>
-        <% console.log(project) %>
-        <li><a href="/project/<%= project._id  %>"><%= project.name %></a></li>
-      <% }) %>
-    </ul>
+    <h1><%= user.name %></h1>
+    <p>CPF: <%= user.cpf %></p>
+    <p>Data Nascimento: <%= user.birth_date.getDate()+1 %>/ <%= user.birth_date.getMonth()+1 %>/ <%= user.birth_date.getFullYear() %></p>
   </div>
-<a href="<%= user.cpf%>/edit">Editar Usuário</a>
-<a href="">Remover usuário</a>
-<div class="modal hidden">
-  <div>
-    <p>Deseja Realmente deletar este usuário</p>
-    <a href="<%= user.cpf%>/delete">Sim</a>
-    <a href="">Não</a>
+  <p>Projetos Que participa</p>
+    <div>
+      <ul>
+        <%(user.projects).forEach((project) => { %>
+          <% console.log(project) %>
+          <li><a href="/project/<%= project._id  %>"><%= project.name %></a></li>
+        <% }) %>
+      </ul>
+    </div>
+  <a href="<%= user.cpf%>/edit">Editar Usuário</a>
+  <a href="">Remover usuário</a>
+  <div class="modal hidden">
+    <div>
+      <p>Deseja Realmente deletar este usuário</p>
+      <a href="<%= user.cpf%>/delete">Sim</a>
+      <a href="">Não</a>
+    </div>
   </div>
 </div>
