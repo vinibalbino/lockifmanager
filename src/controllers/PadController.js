@@ -30,27 +30,26 @@ module.exports = {
     },
     async addPad(req, res){
         const { macAdress, name  } = req.body;
-        const pad = await Pad.findOne( { macAdress: macAdress} );
-        if(pad){
-            setTimeout( () => {
-                 alert("Pad já existente"); 
-            }, 2000);
+        let token = uuid();
+        let pad = await Pad.findOneAndUpdate( { macAdress: macAdress}, {
+            name: name,
+            token: token
+        },{ new: true });
+        if(!pad){
+					let pad = new Pad({
+							_id: ObjectId,
+							name: name,
+							token: token,
+					});
+					await pad.save( error => {
+							if(error){
+									res.send('error', {'error': error});
+							}else{
+									res.send( {'token' : pad.token, 'id': pad._id });
+							}
+					});
         }else {
-            let token = uuid();
-            let ObjectId = mongoose.Types.ObjectId();
-            let pad = new Pad({
-                _id: ObjectId,
-                name: name,
-                token,
-                wemos: "",
-            });
-            await pad.save( error => {
-                if(error){
-                    res.send('error', {'error': error});
-                }else{
-                    res.send( {'token' : pad.token });
-                }
-            });
+					res.send({'token': pad.token, 'id': pad._id });
         };
     },
     async editPad(req, res){
