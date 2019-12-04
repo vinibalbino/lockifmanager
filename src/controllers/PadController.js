@@ -23,6 +23,17 @@ module.exports = {
         const wemos = await Wemos.find();
         res.render('pad_edit', { 'pad': pad, 'wemos': wemos   })
     },
+
+    async checkWemos(req, res) {
+        const { _idPad } = req.params;
+        const pad = await Pad.findOne( { _id: _idPad } )
+        if(pad){
+            res.status(200).send({ 'pad': pad });
+        }else {
+            res.status(500).send({error: 'Pad não encontrado'});
+        }
+    },
+
     async deletePad(req,res){
         const { _idPad } = req.params;
         await Pad.findOneAndRemove( { _id: _idPad } );

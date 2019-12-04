@@ -5,6 +5,8 @@ const WemosController = require('../controllers/WemosController');
 router.get('/', WemosController.getWemos );
 router.get('/add', WemosController.getAddForm);
 router.get('/:_idWemos', WemosController.getOneWemos);
+router.get('/:_idWemos/disable', WemosController.disableWemos);
+router.get('/:_idWemos/test', WemosController.testWemos);
 router.get('/:_idWemos/edit', WemosController.getEditForm);
 router.get('/:_idWemos/delete', WemosController.deleteWemos);
 router.post('/add', WemosController.addWemos);
