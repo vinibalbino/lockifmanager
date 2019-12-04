@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 
-
 var ProjectSchema = new Schema({
   _id: ObjectId,
   name: String,
@@ -12,6 +11,4 @@ var ProjectSchema = new Schema({
   coordinator: {type: ObjectId, ref: 'User'}
 });
 
-Project = mongoose.model("Project", ProjectSchema);
-
-module.exports = Project;
+module.exports = mongoose.model("Project", ProjectSchema);

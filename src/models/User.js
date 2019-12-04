@@ -1,9 +1,8 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const ObjectId = Schema.Types.ObjectId;
 
-
-var UserSchema = new Schema({
+const UserSchema = new Schema({
   _id: ObjectId,
   name: String,
   cpf: String,
@@ -14,6 +13,4 @@ var UserSchema = new Schema({
   blocked: {type: Boolean, default: false},
 });
 
-User = mongoose.model("User", UserSchema);
-
-module.exports = User;
+module.exports = mongoose.model("User", UserSchema);
