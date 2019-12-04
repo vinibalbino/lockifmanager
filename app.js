@@ -7,6 +7,12 @@ const mongoose = require('mongoose');
 const engine = require('ejs-mate')
 const cors = require('cors');
 
+mongoose.connect('mongodb://localhost/lockifmanager', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+});
+
 const indexRouter = require('./src/routes/index');
 
 const usersRouter = require('./src/routes/users');
