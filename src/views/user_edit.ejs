@@ -1,0 +1,10 @@
+<% layout('boilerplate') -%>
+<form class="forms" action="./" method="post">
+  <label for="">Nome Completo</label>
+  <input type="text" name="name" value="<%= user.name %>" />
+  <label for="">CPF</label>
+  <input type="text" name="cpf" value="<%= user.cpf %>" disabled/>
+  <label for="">Data de nascimento</label>
+  <input type="date" name="birth_date" value="<%= user.birth_date %>" />
+  <button >Editar Usuário</button>
+</form>

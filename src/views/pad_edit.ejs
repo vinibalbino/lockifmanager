@@ -1,0 +1,25 @@
+<% layout('boilerplate') -%>
+  <div class="cont-header">
+    <h2>Pad Edit</h2>
+  </div>
+<div class="content">
+    <form class="forms" action="./edit" method="post">
+        <label for="name">Mac Adress</label>
+        <input type="text" id="macAdress" name="macAdress" value="<%= pad.macAdress %>" disabled/>
+        <label for="description">Nome</label>
+        <input type="text" id="name" name="name" value="<%= pad.name %>"/>
+        <label for="name">IP Wemos</label>
+        <% if (pad.wemos === ""){ %> 
+          <select name="" id="">
+            <option value="<%= %>"></option>
+          </select>
+        <% }else{ %>
+          <input type="text" id="wemos" name="ipWemos" value="<%= pad.wemos %>" >
+        <%} %>
+        
+        <input type="text">
+        <div class="btn-area">
+          <button class="add-btn">Editar Wemos</button>
+        </div>
+    </form>
+</div>

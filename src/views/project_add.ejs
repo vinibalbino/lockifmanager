@@ -1,0 +1,103 @@
+<% layout('boilerplate') -%>
+<div class="main">
+  <div class="cont-header">
+      <span class="title">Projetos</span>
+      <span class="routes">home>projects>add</span>
+  </div>
+
+  <div class="content">
+
+    <form class="forms" action="" method="post">
+        <label for="">Nome do projeto</label>
+        <input type="text" name="name" value="" />
+        <label for="">Descrição</label>
+        <textarea name="description" id="" cols="30" rows="5"></textarea>
+        <label for="">Coordenador</label>
+        <select name="coordinator" id="coordinator">
+            <option value=""></option>
+            <% user.forEach(function(u){ %>
+                <option value="<%= u._id%>"><%= u.name%></option>
+            <%});%>
+        </select>
+        <label for="">Participante(s)</label>
+
+        <div id="divParticipants">
+            <select id="participantsChoice" name="" >
+                <option value=""></option>
+                <% user.forEach(function(u){ %>
+                    <option value="<%= u._id%>"><%= u.name%></option>
+                <%});%>
+            </select>
+            <a href="" id="add">+</a>
+            <input type="hidden" name="participants" id="participants" value="[]">
+        </div>   
+        <div class="btn-area">
+            <button class="add-btn">Adicionar projeto</button>
+        </div>
+    </form>          
+    <div id="addedParcipants"></div>
+  </div>
+</div> 
+<script type='application/javascript'>
+    const button = document.getElementById('add');
+    var logica = true;
+    button.addEventListener('click', function(e){
+      e.preventDefault();
+      var idUserSelected = document.getElementById('participantsChoice').value;
+      var participants = JSON.parse(document.getElementById('participants').value);
+      if(idUserSelected == ""){
+        return
+      }
+    
+      for(let i = 0;i < participants.length;i++){
+        if(idUserSelected == participants[i]){
+          logica = false;
+        }
+      }
+      if(logica && document.getElementById('coordinator').value != idUserSelected){
+        participants.push(idUserSelected);
+        document.getElementById('participants').value = JSON.stringify(participants);
+        var p = document.createElement('p');
+        var userSelected = document.getElementById('participantsChoice').selectedOptions[0].innerHTML;
+        p.innerHTML = userSelected;
+        p.id = idUserSelected
+        var a = document.createElement('a');
+        a.id = idUserSelected;
+        a.innerHTML = 'X'
+        a.href = "#";
+        a.onclick = removeTask;
+        a.id = idUserSelected ;
+        var divHTML = document.getElementById('addedParcipants');
+        var div = document.createElement('div');
+        div.id = idUserSelected;
+        div.appendChild(p);
+        div.appendChild(a);
+        divHTML.appendChild(div);
+        logica = true;
+      }else {
+        return logica = true
+      }
+    });
+
+    function removeTask (event) {
+      let participants = JSON.parse(document.getElementById('participants').value);
+      var positionUser;
+      var divChildren = document.getElementById('addedParcipants').children;
+      var userId = event.target.id;
+      console.log(userId);
+      for(let i = 0;i < divChildren.length;i++ ){
+        if(userId == divChildren[i].id){
+          participants.splice(i,1);
+          document.getElementById(`${userId}`).remove();
+        }
+      }
+      document.getElementById('participants').value = JSON.stringify(participants);
+      console.log(participants);
+      for(let i = 0;i < participants.length;i++){
+        if(userId == participants[i]){
+          positionUser = [i];
+        }
+      }
+      
+    }
+</script>
