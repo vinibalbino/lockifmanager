@@ -5,9 +5,9 @@ const ObjectId = Schema.Types.ObjectId;
 const PadSchema = new Schema({
   _id: ObjectId,
   name: String,
-  macAdress: {type: String,},
+  macAddress: {type: String,},
   token: { type: String},
-  wemos: {type: String, ref: 'Wemos'},
+  wemos: {type: ObjectId, ref: 'Wemos'},
 });
 
 module.exports = mongoose.model("Pad", PadSchema);

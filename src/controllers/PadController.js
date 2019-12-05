@@ -26,9 +26,9 @@ module.exports = {
 
     async checkWemos(req, res) {
         const { _idPad } = req.params;
-        const pad = await Pad.findOne( { _id: _idPad } )
+        const pad = await Pad.findOne( { _id: _idPad } ).populate('wemos')
         if(pad){
-            res.status(200).send({ 'pad': pad });
+            res.status(200).send(pad);
         }else {
             res.status(500).send({error: 'Pad não encontrado'});
         }
@@ -40,17 +40,19 @@ module.exports = {
         res.redirect('/pads');
     },
     async addPad(req, res){
-        const { macAdress, name  } = req.body;
+        const { macAddress, name  } = req.body;
         let token = uuid();
-        let pad = await Pad.findOneAndUpdate( { macAdress: macAdress}, {
+        let pad = await Pad.findOneAndUpdate( { macAddress: macAddress}, {
             name: name,
-            token: token
+            token: token,
         },{ new: true });
         if(!pad){
 					let pad = new Pad({
-							_id: ObjectId,
+							_id: mongoose.Types.ObjectId(),
 							name: name,
-							token: token,
+                            token: token,
+                            macAddress: macAddress,
+                            wemos: '5de8252c941dd43ede852536'
 					});
 					await pad.save( error => {
 							if(error){
