@@ -2,6 +2,15 @@
 <div class="main">
       <div class="cont-header">
         <h2>Adicionar Wemos</h2>
+        <% if(msg != "") { %>
+          <% if(error){ %>
+            <p class="<%= green %>"><%= msg %></p>
+            <button>X</button>
+          <% }else{ %>
+            <p class="<%= red %>"><%= msg %></p>
+            <button>X</button>
+          <% } %>
+        <% } %>
       </div>
       <div class="content">
         <form class="forms" action="/wemos/add/ " method="post">

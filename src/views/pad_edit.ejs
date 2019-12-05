@@ -9,15 +9,18 @@
         <label for="description">Nome</label>
         <input type="text" id="name" name="name" value="<%= pad.name %>"/>
         <label for="name">IP Wemos</label>
-        <% if (pad.wemos === ""){ %> 
-          <select name="" id="">
-            <option value="<%= %>"></option>
-          </select>
+        <select name="wemosLis" id="wemosList">
+        <% if (pad.wemos == ""){ %> 
+            <option value="<%= pad.wemos._id  %>"><%= pad.wemos.IP %></option>
         <% }else{ %>
-          <input type="text" id="wemos" name="ipWemos" value="<%= pad.wemos %>" >
+              <option value="<%= %>"></option>
+              <% wemos.forEach( (wemo) => { %>
+                <% if(pad.wemos != wemo._id){ %>
+                  <option value="<%= wemo._id %>"><%= wemo.IP %></option>
+                <% } %>
+              <% }); %>
         <%} %>
-        
-        <input type="text">
+        </select>
         <div class="btn-area">
           <button class="add-btn">Editar Wemos</button>
         </div>

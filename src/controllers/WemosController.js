@@ -20,11 +20,11 @@ const createHeaders = (token, mac) => {
 
 module.exports = {
     async getWemos(req, res){
-        const wemos = await Wemos.find();
-        res.render('wemos_index', { wemos: wemos });
+      const wemos = await Wemos.find();
+      res.render('wemos_index', { 'wemos': wemos, 'msg': "" , 'error': true})
     },
     getAddForm(req, res) {
-      res.render('wemos_add', { 'wemos': "" });
+      res.render('wemos_add', { 'wemos': "", 'msg': "" , 'error': false });
     },
     async getOneWemos(req, res){
       const { _idWemos} = req.params;
@@ -47,10 +47,10 @@ module.exports = {
       } catch(e) {
         //TODO: Redirecionar para a lista de wemos  com a mensagem de erro.
         //A mensagem que vem do servidor está em e.response.data.message
-        res.render('error', {'error': e});
-        return;
+        var message = e.response.data.message;
+        let wemos = await Wemos.find();
+        res.render('wemos_index', { 'wemos': wemos, 'msg': message , 'error': true});
       }   
-      
     },
     async testWemos (req, res) {
       const { _idWemos } = req.params;
@@ -62,13 +62,12 @@ module.exports = {
         let response = await axios(`${wemos.IP}/open`, {
           headers: createHeaders(wemos.token, wemos.macAddress)
         });
-        console.log(response.data);
         res.redirect('/wemos');
       } catch(e) {
         //TODO: Redirecionar para a lista de wemos  com a mensagem de erro.
-        //A mensagem que vem do servidor está em e.response.data.message
-        res.render('error', {'error': e});
-        return;
+        var message = e.response.data.message;
+        let wemos = await Wemos.find();
+        res.render('wemos_index', { 'wemos': wemos, 'msg': message , 'error': true});
       } 
     },
     async getEditForm(req, res){
@@ -90,7 +89,8 @@ module.exports = {
       } catch(e) {
         //TODO: Redirecionar para o formulário com a mensagem de erro.
         //A mensagem que vem do servidor está em e.response.data.message
-        res.render('error', {'error': e});
+        var message = e.response.data.message;
+        res.render('wemos_add', { 'msg': message , 'error': true});
         return;
       }      
 

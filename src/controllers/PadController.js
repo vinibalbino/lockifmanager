@@ -19,7 +19,7 @@ module.exports = {
     },
     async getEditForm(req, res){
         const { _idPad } = req.params;
-        const pad = await Pad.findOne( {_id: _idPad} );
+        const pad = await Pad.findOne( {_id: _idPad} ).populate('wemos');
         const wemos = await Wemos.find();
         res.render('pad_edit', { 'pad': pad, 'wemos': wemos   })
     },
@@ -40,23 +40,24 @@ module.exports = {
         res.redirect('/pads');
     },
     async addPad(req, res){
-        const { macAdress, name  } = req.body;
+        const { macAddress, name  } = req.body;
         let token = uuid();
-        let pad = await Pad.findOneAndUpdate( { macAdress: macAdress}, {
-            name: name,
-            token: token
+        let pad = await Pad.findOneAndUpdate( { macAddress: macAddress}, {
+					name: name,
+					token: token
         },{ new: true });
         if(!pad){
 					let pad = new Pad({
-							_id: ObjectId,
-							name: name,
-							token: token,
+						_id: ObjectId,
+						macAddress: macAddress,
+						name: name,
+						token: token,
 					});
 					await pad.save( error => {
 							if(error){
-									res.send('error', {'error': error});
+								res.send('error', {'error': error});
 							}else{
-									res.send( {'token' : pad.token, 'id': pad._id });
+								res.send( {'token' : pad.token, 'id': pad._id });
 							}
 					});
         }else {
@@ -65,10 +66,12 @@ module.exports = {
     },
     async editPad(req, res){
         const { _idPad } = req.params;
-        const { name } = req.body;
+				const { name, ipWemos } = req.body;
+				const wemos = await Wemos.findOne({ ipWemos: ipWemos });
         await Pad.findOneAndUpdate( { _id: _idPad }, {
-            name,
-        }),
+						name: name,
+						wemos: wemos._id,
+				}),
         res.redirect('/pads');
     }
 }
