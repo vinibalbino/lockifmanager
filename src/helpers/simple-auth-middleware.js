@@ -14,7 +14,6 @@ module.exports = async (req, res, next) => {
   if (pad) {
     let hmac = crypto.createHmac('sha1', key);
     let sign = hmac.update(pad.token+time).digest('hex');
-    console.log(pad);
     if (receveidSign == sign) {
       next();
     } else {
