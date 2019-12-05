@@ -5,7 +5,7 @@ const ObjectId = Schema.Types.ObjectId;
 const WemosSchema = new Schema({
   _id: ObjectId,
   token: String,
-  macAdress: String,
+  macAddress: String,
   IP: { type: String, required: true},
   description: { type: String, required: true},
 });
