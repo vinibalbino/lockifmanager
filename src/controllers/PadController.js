@@ -40,9 +40,9 @@ module.exports = {
         res.redirect('/pads');
     },
     async addPad(req, res){
-        const { macAdress, name  } = req.body;
+        const { macAddress, name  } = req.body;
         let token = uuid();
-        let pad = await Pad.findOneAndUpdate( { macAdress: macAdress}, {
+        let pad = await Pad.findOneAndUpdate( { macAddress: macAddress}, {
             name: name,
             token: token,
         },{ new: true });
@@ -51,6 +51,7 @@ module.exports = {
 							_id: mongoose.Types.ObjectId(),
 							name: name,
                             token: token,
+                            macAddress: macAddress,
                             wemos: '5de8252c941dd43ede852536'
 					});
 					await pad.save( error => {

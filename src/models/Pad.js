@@ -5,7 +5,7 @@ const ObjectId = Schema.Types.ObjectId;
 const PadSchema = new Schema({
   _id: ObjectId,
   name: String,
-  macAdress: {type: String,},
+  macAddress: {type: String,},
   token: { type: String},
   wemos: {type: ObjectId, ref: 'Wemos'},
 });
