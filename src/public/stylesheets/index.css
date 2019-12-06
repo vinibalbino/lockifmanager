@@ -24,6 +24,10 @@ font-family: 'Roboto', sans-serif; */
   font-family: 'Lato', sans-serif;
 }
 
+.hidden {
+  display: none;
+}
+
 .retractable-menu {
   display: none;
 }
@@ -246,6 +250,7 @@ main {
 }
 
 .description {
+  margin: 8px;
   color: var(--color-link);
 }
 
@@ -361,8 +366,8 @@ form input:focus {
 .access-header h2 {
   margin-left: 20px;
 
-  font-size: 20px;
-  font-weight: 300;
+  font-size: 18px;
+  font-weight: 600;
   color: var(--font-color);
 }
 
@@ -481,6 +486,37 @@ form input:focus {
   color: rgb(0, 0, 0);
 }
 
+.modal-delete {
+  background-color: rgb(252, 252, 252);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.27);
+
+  padding: 1rem;
+
+  margin-top: 20%;
+
+  position: fixed;
+
+  border-radius: 4px;
+  
+  width: 40%;
+  height: 20%;
+  
+  transform: translate(75%, -40%);
+}
+
+.btn-box {
+  margin-top: 2rem;
+}
+
+.black {
+  width: 100vw;
+  height: 100vh;
+
+  position: fixed;
+
+  background-color: rgba(0, 0, 0, 0.452);
+}
+
 @media screen and (max-width: 900px) {
 
   .retractable-menu {
@@ -498,7 +534,7 @@ form input:focus {
   }
 
   .menu {
-    right: 100%;
+    right: 150%;
 
     margin-top: 64px;
     }
@@ -539,5 +575,17 @@ form input:focus {
 
     .access-area {
       display: flex;
+    }
+
+    .modal-delete { 
+      width: 70%;
+    }
+
+    .modal-delete {      
+      transform: translate(12.5%, 50%);
+    }
+
+    .cont-header {
+      flex-direction: column;
     }
 }

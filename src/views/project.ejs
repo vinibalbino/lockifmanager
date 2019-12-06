@@ -21,16 +21,20 @@
 
     <div class="edit">
       <a class="description" href="<%= project._id%>/edit">Editar Projeto</a>
-      <a class="description" href="">Remover Projeto</a>
-    </div>
-
-    <div class="modal-delete">
-      <p>Deseja Realmente deletar este projeto</p>
-
-      <div class="btn-box">
-          <a class="description" href="<%= project._id%>/delete">Sim</a>
-          <a class="description" href="">Não</a>
-      </div>
+      <a class="description" onclick="modalSwap()">Remover Projeto</a>
     </div>
   </div>
 </div>
+<div id="modal" class="hidden">
+  <div class="modal-delete">
+    <p>Deseja realmente deletar este projeto?</p>
+  
+    <div class="btn-box">
+        <a class="description" href="">Não</a>
+        <a class="description" href="<%= project._id%>/delete">Sim</a>
+    </div>
+  </div>
+</div>
+
+
+
