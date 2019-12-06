@@ -5,24 +5,18 @@
 <div class="content">
     <form class="forms" action="./edit" method="post">
         <label for="name">Mac Adress</label>
-        <input type="text" id="macAdress" name="macAdress" value="<%= pad.macAdress %>" disabled/>
+        <input type="text" id="macAddress" name="macAddress" value="<%= pad.macAddress %>" disabled/>
         <label for="description">Nome</label>
         <input type="text" id="name" name="name" value="<%= pad.name %>"/>
         <label for="name">IP Wemos</label>
-        <select name="wemosLis" id="wemosList">
-        <% if (pad.wemos == ""){ %> 
-            <option value="<%= pad.wemos._id  %>"><%= pad.wemos.IP %></option>
-        <% }else{ %>
-              <option value="<%= %>"></option>
-              <% wemos.forEach( (wemo) => { %>
-                <% if(pad.wemos != wemo._id){ %>
-                  <option value="<%= wemo._id %>"><%= wemo.IP %></option>
-                <% } %>
-              <% }); %>
-        <%} %>
+        <select name="wemos" id="wemosList">
+          <option value="<%= %>"></option>
+          <% wemos.forEach( (wemo) => { %>
+            <option value="<%= wemo._id %>" <%= (wemo._id.equals(pad.wemos))?'selected':'' %>><%= wemo.IP %></option>
+          <% }); %>
         </select>
         <div class="btn-area">
-          <button class="add-btn">Editar Wemos</button>
+          <button class="add-btn">Editar Pad</button>
         </div>
     </form>
 </div>

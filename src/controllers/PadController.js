@@ -19,7 +19,7 @@ module.exports = {
     },
     async getEditForm(req, res){
         const { _idPad } = req.params;
-        const pad = await Pad.findOne( {_id: _idPad} ).populate('wemos');
+        const pad = await Pad.findOne( {_id: _idPad} );
         const wemos = await Wemos.find();
         res.render('pad_edit', { 'pad': pad, 'wemos': wemos   })
     },
@@ -66,11 +66,11 @@ module.exports = {
     },
     async editPad(req, res){
         const { _idPad } = req.params;
-				const { name, ipWemos } = req.body;
-				const wemos = await Wemos.findOne({ ipWemos: ipWemos });
+				const { name, wemos } = req.body;
+				//const wemos = await Wemos.findOne({ ipWemos: ipWemos });
         await Pad.findOneAndUpdate( { _id: _idPad }, {
 						name: name,
-						wemos: wemos._id,
+						wemos: wemos,
 				}),
         res.redirect('/pads');
     }
