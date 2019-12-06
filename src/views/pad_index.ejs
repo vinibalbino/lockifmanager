@@ -1,15 +1,16 @@
 <% layout('boilerplate') -%>
-<div class="cont-header">
-    <h2>Pads Cadastrados</h2>
-</div>
-<div class="content">
-    <div class="user-list">
-        <% pads.forEach(function(pad) { %>
-    <div class="user-table">
-        <p class=""><%= pad.name %></p>
-        <a class="description" href="/pad/<%= pad._id %>">Mais detalhes</a>
+<div class="main">
+    <div class="cont-header">
+        <h2>Pads Cadastrados</h2>
     </div>
-<% }); %>
-</div>
-</div>
+    <div class="content">
+        <div class="user-list">
+            <% pads.forEach(function(pad) { %>
+        <div class="user-table">
+            <p class=""><%= pad.name %></p>
+            <a class="description" href="/pad/<%= pad._id %>">Mais detalhes</a>
+        </div>
+         <% }); %>
+        </div>
+    </div>
 </div> 

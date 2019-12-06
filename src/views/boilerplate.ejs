@@ -18,28 +18,39 @@
       </div>
 
       <div class="user">
-        <div class="link-area-header">
-          <div class="access-btn-header">
-            <a href="/">Acessar</a>
-          </div>
-          <div class="green-bar-header"></div>
+          <a href="/">
+            <div class="link-area-header">
+              <div class="access-btn-header">
+                <!-- <img src="/img/project.png" alt="" width="20px" height="auto"/> -->
+                <p>Acessar</p> 
+              </div>
+              <div class="green-bar-header"></div>
+            </div>
+          </a>
         </div>
-
-        <div class="link-area-header">
-          <div class="access-btn-header">
-            <a href="/">Cadastrar-se</a>
-          </div>
-          <div class="green-bar-header"></div>
-        </div>
-        
-      </div>
     </header>
 
     <main>
-        <div class="menu">
-            <h2></h2>
-    
+      <div class="retractable-menu" onclick="swapClasses()">
+        <label id="icone" for="check">
+          <div class="hamburguer1-btn"></div>
+          <div class="hamburguer2-btn"></div>
+          <div class="hamburguer3-btn"></div>
+        </label>
+      </div>
+        <div id="menu" class="menu">    
             <div class="links">
+              <div class="access-area">          
+                    <a href="/">
+                      <div class="link-area">
+                        <div class="access-btn">
+                          <!-- <img src="/img/project.png" alt="" width="20px" height="auto"/> -->
+                          <p>Acessar</p> 
+                        </div>
+                        <div class="green-bar"></div>
+                      </div>
+                    </a>
+              </div>
     
               <div class="link-area">
                 <div class="access-header">
@@ -97,7 +108,7 @@
 
               <div class="link-area">
                 <div class="access-header">
-                  <img src="/img/project.png" alt="" width="24px" height="auto"/>
+                  <!-- <img src="/img/project.png" alt="" width="24px" height="auto"/> -->
                   <h2>Pads</h2> 
                 </div>
               </div>
@@ -105,7 +116,7 @@
               <a href="/pads">
                 <div class="link-area">
                   <div class="access-btn">
-                    <img src="/img/add_user.png" alt="" width="20px" height="auto"/>
+                    <!-- <img src="/img/add_user.png" alt="" width="20px" height="auto"/> -->
                     <p>Pads</p> 
                   </div>
                   <div class="green-bar"></div>
@@ -114,7 +125,7 @@
 
               <div class="link-area">
                 <div class="access-header">
-                  <img src="/img/project.png" alt="" width="24px" height="auto"/>
+                  <!-- <img src="/img/project.png" alt="" width="24px" height="auto"/> -->
                   <h2>Wemos</h2> 
                 </div>
 
@@ -122,7 +133,7 @@
               <a href="/wemos">
                 <div class="link-area">
                   <div class="access-btn">
-                    <img src="/img/add_user.png" alt="" width="20px" height="auto"/>
+                    <!-- <img src="/img/add_user.png" alt="" width="20px" height="auto"/> -->
                     <p>Wemos</p> 
                   </div>
                   <div class="green-bar"></div>
@@ -132,7 +143,7 @@
               <a href="/wemos/add">
                 <div class="link-area">
                   <div class="access-btn">
-                    <img src="/img/add_user.png" alt="" width="20px" height="auto"/>
+                    <!-- <img src="/img/add_user.png" alt="" width="20px" height="auto"/> -->
                     <p>Adicionar Wemos</p> 
                   </div>
                   <div class="green-bar"></div>
@@ -148,5 +159,18 @@
           <%- body -%>
     </main>
   </body>
+  <script>
+    var trocar = true;
+    function swapClasses() {
+    if(trocar == true) {
+      trocar = false;
+      document.getElementById("menu").className = "menu-on";
+     } 
+     else if (trocar == false) {
+      trocar = true;
+      document.getElementById("menu").className = "menu";
+     }
+    }
+  </script>
 </html>
 
