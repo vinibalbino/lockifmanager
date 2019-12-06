@@ -30,19 +30,33 @@
           </div>
           <div class="green-bar-header"></div>
         </div>
-        
-      </div>
     </header>
 
     <main>
-        <div class="menu">
-            <h2></h2>
-    
+      <div class="retractable-menu" onclick="swapClasses()">
+        <label id="icone" for="check">
+          <div class="hamburguer1-btn"></div>
+          <div class="hamburguer2-btn"></div>
+          <div class="hamburguer3-btn"></div>
+        </label>
+      </div>
+        <div id="menu" class="menu">    
             <div class="links">
+              <div class="access-area">          
+                    <a href="/">
+                      <div class="link-area">
+                        <div class="access-btn">
+                          <!-- <img src="/img/project.png" alt="" width="20px" height="auto"/> -->
+                          <p>Acessar</p> 
+                        </div>
+                        <div class="green-bar"></div>
+                      </div>
+                    </a>
+              </div>
     
               <div class="link-area">
                 <div class="access-header">
-                  <img src="/img/project.png" alt="" width="24px" height="auto"/>
+                  <!-- <img src="/img/project.png" alt="" width="24px" height="auto"/> -->
                   <h2>Projetos</h2> 
                 </div>
               </div>
@@ -50,7 +64,7 @@
               <a href="/projects">
                 <div class="link-area">
                   <div class="access-btn">
-                    <img src="/img/project.png" alt="" width="20px" height="auto"/>
+                    <!-- <img src="/img/project.png" alt="" width="20px" height="auto"/> -->
                     <p>Listar projetos</p> 
                   </div>
                   <div class="green-bar"></div>
@@ -60,7 +74,7 @@
               <a href="/project/add">
                 <div class="link-area">
                   <div class="access-btn">
-                    <img src="/img/add_project.png" alt="" width="20px" height="auto"/>
+                    <!-- <img src="/img/add_project.png" alt="" width="20px" height="auto"/> -->
                     <p>Adicionar Projetos</p> 
                   </div>
                   <div class="green-bar"></div>
@@ -69,7 +83,7 @@
     
               <div class="link-area">
                   <div class="access-header">
-                    <img src="/img/user.png" alt="" width="24px" height="auto"/>
+                    <!-- <img src="/img/user.png" alt="" width="24px" height="auto"/> -->
                     <h2>Usuários</h2> 
                   </div>
                 </div>
@@ -77,7 +91,7 @@
               <a href="/users">
                 <div class="link-area">
                   <div class="access-btn">
-                    <img src="/img/user.png" alt="" width="20px" height="auto"/>
+                    <!-- <img src="/img/user.png" alt="" width="20px" height="auto"/> -->
                     <p>Usuários</p> 
                   </div>
                   <div class="green-bar"></div>
@@ -87,7 +101,7 @@
               <a href="/user/add">
                 <div class="link-area">
                   <div class="access-btn">
-                    <img src="/img/add_user.png" alt="" width="20px" height="auto"/>
+                    <!-- <img src="/img/add_user.png" alt="" width="20px" height="auto"/> -->
                     <p>Adicionar Usuários</p> 
                   </div>
                   <div class="green-bar"></div>
@@ -96,7 +110,7 @@
 
               <div class="link-area">
                 <div class="access-header">
-                  <img src="/img/project.png" alt="" width="24px" height="auto"/>
+                  <!-- <img src="/img/project.png" alt="" width="24px" height="auto"/> -->
                   <h2>Pads</h2> 
                 </div>
               </div>
@@ -104,7 +118,7 @@
               <a href="/pads">
                 <div class="link-area">
                   <div class="access-btn">
-                    <img src="/img/add_user.png" alt="" width="20px" height="auto"/>
+                    <!-- <img src="/img/add_user.png" alt="" width="20px" height="auto"/> -->
                     <p>Pads</p> 
                   </div>
                   <div class="green-bar"></div>
@@ -113,7 +127,7 @@
 
               <div class="link-area">
                 <div class="access-header">
-                  <img src="/img/project.png" alt="" width="24px" height="auto"/>
+                  <!-- <img src="/img/project.png" alt="" width="24px" height="auto"/> -->
                   <h2>Wemos</h2> 
                 </div>
 
@@ -121,7 +135,7 @@
               <a href="/wemos">
                 <div class="link-area">
                   <div class="access-btn">
-                    <img src="/img/add_user.png" alt="" width="20px" height="auto"/>
+                    <!-- <img src="/img/add_user.png" alt="" width="20px" height="auto"/> -->
                     <p>Wemos</p> 
                   </div>
                   <div class="green-bar"></div>
@@ -131,7 +145,7 @@
               <a href="/wemos/add">
                 <div class="link-area">
                   <div class="access-btn">
-                    <img src="/img/add_user.png" alt="" width="20px" height="auto"/>
+                    <!-- <img src="/img/add_user.png" alt="" width="20px" height="auto"/> -->
                     <p>Adicionar Wemos</p> 
                   </div>
                   <div class="green-bar"></div>
@@ -140,14 +154,30 @@
             </div>
             <div class="footer"> 
               <h4>Feito por Vinicius e Emanuel em Dourados MS</h4>
-              <h3>GEDAE - LockIFManeger© 2019</h3>
+              <h3>GEDAE - LockIFManager© 2019</h3>
             </div>
           </div>
 
-        <div class="main">
           <%- body -%>
-        </div>
     </main>
   </body>
+  <script>
+    var trocar = true;
+    function swapClasses() {
+    if(trocar == true) {
+      trocar = false;
+      document.getElementById("menu").className = "menu-on";
+     } 
+     else if (trocar == false) {
+      trocar = true;
+      document.getElementById("menu").className = "menu";
+     }
+    }
+
+    function modalSwap () {
+      document.getElementById("modal").className = "black";
+    }
+
+  </script>
 </html>
 

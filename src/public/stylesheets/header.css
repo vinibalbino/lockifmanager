@@ -1,11 +1,15 @@
 header {
-    width: 100%;
+    width: 80%;
     height: 64px;
+
+    margin-left: 20%;
 
     display: flex;
 
-    background-color: rgb(68, 68, 109);
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    position: fixed;
+
+    background-color: rgb(245, 245, 245);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.24);
 }
 
 .logo {
@@ -19,7 +23,7 @@ h1 {
     margin: 0 0 0 2rem;
     
     font-weight: 300;
-    color: rgb(230, 230, 230);
+    color: rgb(32, 32, 32);
 }
 
 .logo-detail {
@@ -42,13 +46,13 @@ h1 {
   }
   
   .link-area-header:hover .access-btn-header {
-    background-color: rgba(0, 0, 0, 0.164);
+    background-color: rgba(0, 0, 0, 0.041);
     cursor: pointer;
   
   }
   
   .link-area-header:hover .green-bar-header {
-    background-color: rgb(64, 187, 82);
+    background-color: rgb(255, 196, 0);
     cursor: pointer;
   }
   

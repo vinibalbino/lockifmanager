@@ -79,8 +79,8 @@ module.exports = {
       users: participants,
       coordinator: coordinator
     });
-    let project = await Project.findOne( {_id: projectId} ).populate('users');
-    let usersId = project.users.map(( {_id} ) => _id);
+    project = await Project.findOne( {_id: projectId} ).populate('users');
+    usersId = project.users.map(( {_id} ) => _id);
     usersId.forEach( async (userId) => {
       await User.findOneAndUpdate( { _id: userId }, {$push: {projects: project._id} })
     });

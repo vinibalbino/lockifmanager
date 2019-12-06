@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
 
+:root {
+  --color-dark: rgb(48, 48, 73);
+  --color-bright: rgb(54, 54, 80);
+  --color-header: rgb(68, 68, 109);
+  --color-detail: rgb(130, 211, 98);
+  --color-link: rgb(20, 159, 223);
+  --color-link-dark: rgb(26, 146, 202);
+  --font-color: rgb(255, 255, 255);
+}
+
 /* font-family: 'Open Sans', sans-serif;
 font-family: 'Lato', sans-serif;
 font-family: 'Roboto', sans-serif; */
@@ -14,16 +24,100 @@ font-family: 'Roboto', sans-serif; */
   font-family: 'Lato', sans-serif;
 }
 
+.hidden {
+  display: none;
+}
+
+.retractable-menu {
+  display: none;
+}
+
+.access-area {
+  display: none;
+}
+
 body {
   background-color: rgb(243, 245, 255);
 }
 
+header {
+  width: 80%;
+  height: 64px;
+
+  margin-left: 20%;
+
+  display: flex;
+
+  position: fixed;
+
+  background-color: var(--color-header);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.24);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 9;
+}
+
+h1 {
+  margin: 0 0 0 2rem;
+  
+  font-weight: 300;
+  color: var(--font-color);
+}
+
+.logo-detail {
+  font-weight: bold;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 3;
+}
+
+.link-area-header {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.link-area-header:hover .access-btn-header {
+  background-color: rgba(0, 0, 0, 0.041);
+  cursor: pointer;
+
+}
+
+.link-area-header:hover .green-bar-header {
+  background-color: var(--color-detail);
+  cursor: pointer;
+}
+
+.access-btn-header {
+  width: 100%;
+  height: 92%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.green-bar-header {
+  width: 100%;
+  height: 8%;
+}
+
 a {
-  color: rgb(239, 239, 239);
+  color: var(--font-color);
 }
 
 h2 {
-  color: rgb(52, 52, 72);
+  color: rgb(32,32,32);
 }
 
 h3:first-child {
@@ -43,19 +137,29 @@ main {
 }
 
 .menu {
-  width: 100%;
-  height: 100vh;
+  width: 20%;
+  height: 100%;
+
+  transition: 0.15s;
 
 
   flex: 3;
   display: flex;
   flex-direction: column;
 
-  background-color: rgb(52, 52, 72);
-}
+  position: fixed;
+
+  background-color: var(--color-bright);
+
+
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.27);
+  }
 
 .access-btn p {
-  margin-left: 4px;
+  margin-left: 25px;
+
+  color: var(--font-color);
+  font-weight: 300;
 }
 
 .access-btn img {
@@ -65,6 +169,9 @@ main {
 .main {
   width: 100%;
   height: 100%;
+ 
+  margin-left: 20%;
+  margin-top: 5%;
 
   flex: 9;
 
@@ -82,12 +189,12 @@ main {
 }
 
 .link-area:hover .access-btn {
-  background-color: rgb(44, 44, 63);
+  background-color: rgba(0, 0, 0, 0.041);
   cursor: pointer;
 }
 
 .link-area:hover .green-bar {
-  background-color: rgb(64, 187, 82);
+  background-color: var(--color-detail);
   cursor: pointer;
 }
 
@@ -143,11 +250,12 @@ main {
 }
 
 .description {
-  color: rgb(41, 169, 185);
+  margin: 8px;
+  color: var(--color-link);
 }
 
 .description:hover {
-  color: rgb(24, 124, 138);
+  color: var(--color-link-dark);
   text-decoration: underline;
 }
 
@@ -185,36 +293,59 @@ main {
   border-radius: 3px;
 
   font-size: 14px;
-  color: rgb(252, 252, 252);
+  color: rgb(29, 112, 207);
 
-  background-color: rgb(29, 123, 230);
+  background-color: rgba(242, 242, 243, 0);
+  border: solid 1px rgb(29, 112, 207);
 
   cursor: pointer;
+
+  transition: 0.15s;
 }
 
 .add-btn:hover {
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.397);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.192);
   background-color: rgb(29, 112, 207);
+  color: rgb(252, 252, 252);
 }
 
 form input {
-  width: 100%;
+  width: 98%;
   height: 24px;
 
-  padding: 1px;
+  padding: 0 1% 0 1%;
+  margin-bottom: 1rem;
 
   font-size: 14px;
 
   border: none;
   border-radius: 3px;
 
-  background-color: rgb(243, 243, 243);  
+  background-color: rgb(245, 245, 245);  
 
   transition: 0.2s;
 }
 
+textarea {
+  width: 98%;
+  height: 128px;
+
+  padding: 0 1% 0 1%;
+  margin-bottom: 1rem;
+
+  font-size: 14px;
+
+  border: none;
+  border-radius: 3px;
+
+  background-color: rgb(245, 245, 245);  
+
+  transition: 0.2s;
+}
+
+textarea:focus,
 form input:focus {
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.397);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 .access-header {
@@ -224,10 +355,8 @@ form input:focus {
   display: flex;
   align-items: center;
 
-  color: rgb(239, 239, 239);
-
-  background-color: rgb(54, 54, 80);
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.158);
+  background-color: var(--color-dark);
+  /* box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.158); */
 }
 
 .access-header img {
@@ -237,9 +366,9 @@ form input:focus {
 .access-header h2 {
   margin-left: 20px;
 
-  font-size: 20px;
-  font-weight: 300;
-  color: rgb(239, 239, 239);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--font-color);
 }
 
 .forms label {
@@ -250,4 +379,213 @@ form input:focus {
   font-size: 32px;
   font-weight: 300;
   color: black;
+}
+
+.footer {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--color-dark);
+
+  width: 100%;
+  height: 100%;
+
+  flex: 2;
+}
+
+.footer h3 {
+  font-size: 12px;
+  color: var(--font-color);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  text-align: center;
+}
+
+.footer h4 {
+  font-size: 13px;
+  color: var(--font-color);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  text-align: center;
+}
+
+.edit a:first-child {
+  margin-right: 1rem;
+}
+
+.modal-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modal-delete a {
+  margin-right: 1rem;
+}
+
+.date {
+  font-size: 13px;
+  color: rgb(158, 158, 158);
+
+  margin: 0.5rem 0px 0.5rem 0px;
+}
+
+.hamburguer1-btn,
+.hamburguer2-btn,
+.hamburguer3-btn {
+  width: 35px;
+  height: 6px;
+  
+  position: fixed;
+
+  left: 2rem;
+
+  border-radius: 3px;
+
+  background-color: var(--font-color);
+}
+
+.hamburguer1-btn {
+  top: 18px;
+}
+
+.hamburguer2-btn{
+  top: 27px;
+}
+
+.hamburguer3-btn {
+  top: 36px;
+}
+
+.menu-on {
+  width: 20%;
+  height: 100%;
+
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+
+  position: fixed;
+
+  left: 0%;
+
+  background-color: var(--color-bright);
+
+  transition: 0.15s;
+
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.27);
+}
+
+#add {
+  color: rgb(0, 0, 0);
+}
+
+.modal-delete {
+  background-color: rgb(252, 252, 252);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.27);
+
+  padding: 1rem;
+
+  margin-top: 20%;
+
+  position: fixed;
+
+  border-radius: 4px;
+  
+  width: 40%;
+  height: 20%;
+  
+  transform: translate(75%, -40%);
+}
+
+.btn-box {
+  margin-top: 2rem;
+}
+
+.black {
+  width: 100vw;
+  height: 100vh;
+
+  position: fixed;
+
+  background-color: rgba(0, 0, 0, 0.452);
+}
+
+@media screen and (max-width: 900px) {
+
+  .retractable-menu {
+    display: initial;
+  }
+
+  .footer {
+    flex: 3;
+
+    justify-content: flex-start;
+  }
+
+  h4 {
+    margin-top: 2rem;
+  }
+
+  .menu {
+    right: 150%;
+
+    margin-top: 64px;
+    }
+
+    .menu-on {
+      width: 60%;
+    
+      margin-top: 64px;
+    }
+
+    header {
+      width: 100%;
+
+      margin-left: 0%; 
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    .main h1 {
+      margin: 2px;
+
+      font-size: 20px;
+    }
+
+    .main {
+      margin: 20% 5% 5% 5%;
+    }
+
+    .user {
+      display: none;
+    }
+
+    .logo {
+      justify-content: center;
+    }
+
+    .access-area {
+      display: flex;
+    }
+
+    .modal-delete { 
+      width: 70%;
+    }
+
+    .modal-delete {      
+      transform: translate(12.5%, 50%);
+    }
+
+    .cont-header {
+      flex-direction: column;
+    }
 }
