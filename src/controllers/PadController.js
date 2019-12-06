@@ -70,7 +70,7 @@ module.exports = {
 				//const wemos = await Wemos.findOne({ ipWemos: ipWemos });
         await Pad.findOneAndUpdate( { _id: _idPad }, {
 						name: name,
-						wemos: wemos,
+						wemos: (wemos) ? wemos : null,
 				}),
         res.redirect('/pads');
     }
