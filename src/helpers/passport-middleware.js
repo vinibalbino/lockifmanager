@@ -26,20 +26,29 @@ passport.use(new Strategy(
       if (err) {
         return cb(err);
       }
-      console.log();
+      console.log('akshdjkahksjdhkahjksdha');
     } 
 }));
 
 passport.serializeUser(function(user, cb) {
+  console.log(user)
   cb(null, user._id);
 });
   
-passport.deserializeUser( function(id, cb) {
-  Admin.findById(id).then(function(err, user) {
-    if (err) {
-      return cb(e);
+passport.deserializeUser( async function(id, cb) {
+  console.log(id)
+  console.log(cb);
+  try{
+    let user = await Admin.findById(id);
+    if(!user){
+      return;
     }
-    
-    return cb(null, user);
-  });
+    if(user){
+      return cb(null, user);
+    }
+  } catch(err){
+    if (err) {
+      return cb(err);
+    }
+  }
 });

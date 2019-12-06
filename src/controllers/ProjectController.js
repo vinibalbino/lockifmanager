@@ -37,8 +37,13 @@ module.exports = {
     const { name, description, coordinator  } = req.body;
     let {participants} = req.body;
     participants = JSON.parse(participants);
+    participants.forEach( async participant => {
+      if(participant == coordinator){
+        let users = await User.find()
+        return res.render('project_add', { user: users });
+      }; 
+    });
     let ObjectId = mongoose.Types.ObjectId();
-    
     let project = new Project({
       _id: ObjectId,
       name: name,
