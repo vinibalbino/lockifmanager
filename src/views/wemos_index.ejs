@@ -2,6 +2,15 @@
 <div class="main">
   <div class="cont-header">
     <h2>Wemos cadastrados</h2>
+    <% if(msg != "") { %>
+      <% if(error){ %>
+        <p class="<%= green %>"><%= msg %></p>
+        <button>X</button>
+      <% }else{ %>
+        <p class="<%= red %>"><%= msg %></p>
+        <button>X</button>
+      <% } %>
+    <% } %>
   </div>
   <div class="wemosList content">
       <% wemos.forEach(function(wemos) { %>
@@ -10,6 +19,7 @@
         <h4>Descrição do projeto:</h4>
         <p><%= wemos.description %></p>
         <a class="description" href="/wemos/<%= wemos._id%>">Vizualizar o Wemos</a>
+        <a class="description" href="/wemos/<%= wemos._id%>/edit">Editar Wemos</a>
         <a class="description" href="/wemos/<%= wemos._id%>/disable">Desativar o Wemos</a>
         <a class="description" href="/wemos/<%= wemos._id%>/test">Testar o Wemos</a>
       </div>

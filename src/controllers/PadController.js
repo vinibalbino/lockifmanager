@@ -43,22 +43,21 @@ module.exports = {
         const { macAddress, name  } = req.body;
         let token = uuid();
         let pad = await Pad.findOneAndUpdate( { macAddress: macAddress}, {
-            name: name,
-            token: token,
+					name: name,
+					token: token
         },{ new: true });
         if(!pad){
 					let pad = new Pad({
-							_id: mongoose.Types.ObjectId(),
-							name: name,
-                            token: token,
-                            macAddress: macAddress,
-                            wemos: '5de8252c941dd43ede852536'
+						_id: ObjectId,
+						macAddress: macAddress,
+						name: name,
+						token: token,
 					});
 					await pad.save( error => {
 							if(error){
-									res.send('error', {'error': error});
+								res.send('error', {'error': error});
 							}else{
-									res.send( {'token' : pad.token, 'id': pad._id });
+								res.send( {'token' : pad.token, 'id': pad._id });
 							}
 					});
         }else {
@@ -67,10 +66,12 @@ module.exports = {
     },
     async editPad(req, res){
         const { _idPad } = req.params;
-        const { name } = req.body;
+				const { name, wemos } = req.body;
+				//const wemos = await Wemos.findOne({ ipWemos: ipWemos });
         await Pad.findOneAndUpdate( { _id: _idPad }, {
-            name,
-        }),
+						name: name,
+						wemos: (wemos) ? wemos : null,
+				}),
         res.redirect('/pads');
     }
 }
