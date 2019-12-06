@@ -8,6 +8,7 @@ const engine = require('ejs-mate')
 const cors = require('cors');
 const passport = require('passport');
 require('./src/helpers/passport-middleware');
+const {authenticationMiddleware} = require('./src/helpers/auth-middleware');
 
 mongoose.connect('mongodb://localhost/lockifmanager', {
   useNewUrlParser: true,
@@ -51,14 +52,14 @@ app.use(passport.session());
 // Colocando as Rotas para o express enterder
 
 app.use('/', indexRouter);
-app.use('/login', loginRouter)
-app.use('/users', usersRouter);
-app.use('/user', userRouter);
-app.use('/projects', projectsRouter);
-app.use('/project', projectRouter);
-app.use('/wemos', wemosRouter);
-app.use('/pads', padsRoutes);
-app.use('/pad', padRoutes)
+app.use('/login', loginRouter);
+app.use('/users', authenticationMiddleware(), usersRouter);
+app.use('/user', authenticationMiddleware(), userRouter);
+app.use('/projects', authenticationMiddleware(), projectsRouter);
+app.use('/project', authenticationMiddleware(), projectRouter);
+app.use('/wemos', authenticationMiddleware(), wemosRouter);
+app.use('/pads', authenticationMiddleware(), padsRoutes);
+app.use('/pad', authenticationMiddleware(), padRoutes)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

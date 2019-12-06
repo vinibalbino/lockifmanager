@@ -1,5 +1,5 @@
 const Project = require('../models/Project');
-// const User = require('../models/User');
+const User = require('../models/User');
 const mongoose = require('mongoose');
   
 module.exports = {
@@ -37,8 +37,13 @@ module.exports = {
     const { name, description, coordinator  } = req.body;
     let {participants} = req.body;
     participants = JSON.parse(participants);
+    participants.forEach( async participant => {
+      if(participant == coordinator){
+        let users = await User.find()
+        return res.render('project_add', { user: users });
+      }; 
+    });
     let ObjectId = mongoose.Types.ObjectId();
-    
     let project = new Project({
       _id: ObjectId,
       name: name,
