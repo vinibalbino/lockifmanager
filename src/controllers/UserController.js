@@ -23,6 +23,7 @@ module.exports = {
 	async getEditForm(req, res){
 		const { userId } = req.params;
 		const user = await User.findOne({cpf: userId});
+		console.log(user);
 		res.render('user_edit', {'user': user });
 	},
 	async addUser(req, res){

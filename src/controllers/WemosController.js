@@ -65,7 +65,7 @@ module.exports = {
         res.redirect('/wemos');
       } catch(e) {
         //TODO: Redirecionar para a lista de wemos  com a mensagem de erro.
-        var message = e.response.data.message;
+        let message = e.response.data.message;
         let wemos = await Wemos.find();
         res.render('wemos_index', { 'wemos': wemos, 'msg': message , 'error': true});
       } 
@@ -92,8 +92,7 @@ module.exports = {
         var message = e.response.data.message;
         res.render('wemos_add', { 'msg': message , 'error': true});
         return;
-      }      
-
+      }
       if(ipWemos != "" && description != ""){
           let wemos = await Wemos.findOne( { IP: ipWemos }  );
           if(wemos){
@@ -117,7 +116,7 @@ module.exports = {
             });
           }
       }else {
-        res.render('wemos_add');
+        res.render('wemos_add', { 'msg': "Prencha os campos" , 'error': true});
       }
     },
     async editWemos(req, res){

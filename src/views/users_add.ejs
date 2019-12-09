@@ -3,6 +3,12 @@
     <div class="cont-header">
       <span class="title">Adicionar Usuário</span>
       <span class="routes">home>user>add</span>
+      <div class="error" id="message">
+          <% if(error != "") { %>
+            <p><%= error %></p>
+            <button id="button" class="close-button">X</button> 
+          <%}%> 
+      </div>
     </div>
     <div class="content">
       <div class="main-forms">
@@ -13,9 +19,7 @@
             <input id="cpf" type="number" name="cpf" value="" maxlength="11" required/>
             <label for="birth_date">Data de nascimento</label>
             <input id="birth_date" type="date" name="birth_date" required/>
-            <% if(error != null) { %>
-                <h1><%= error %></h1>
-            <%}%> 
+            
             <div class="btn-area">
               <button class="add-btn">Adicionar usuário</button>
             </div>
@@ -23,3 +27,11 @@
       </div>
   </div>
 </div>
+
+<script>
+  const button = document.getElementById('button');
+  button.addEventListener('click', e => {
+    e.preventDefault();
+
+  });
+</script>

@@ -11,7 +11,7 @@
       
     <div>
       <h3>Coordenador</h3>
-      <p><%= coordinator.name %></p>
+      <a href="/user/<%= coordinator.cpf %>" class="description"><%= coordinator.name %></a>
 
       <h3>Participantes</h3>
       <% userNames.forEach(function(user){%>

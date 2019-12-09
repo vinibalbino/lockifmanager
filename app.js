@@ -59,7 +59,7 @@ app.use('/projects', authenticationMiddleware(), projectsRouter);
 app.use('/project', authenticationMiddleware(), projectRouter);
 app.use('/wemos', authenticationMiddleware(), wemosRouter);
 app.use('/pads', authenticationMiddleware(), padsRoutes);
-app.use('/pad', authenticationMiddleware(), padRoutes)
+app.use('/pad', padRoutes)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
